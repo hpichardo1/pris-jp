@@ -5,6 +5,7 @@
 1. Fork and clone this repo.
 2. `npm install`.
 3. `npm run start:dev`
+
 ## Details
 
 ### The Premise
@@ -13,7 +14,7 @@ You are the CTO of a company which manages Campuses and Enrollments. Create a RE
 
 ### The tools
 
-For this project, you must use Express to handle HTTP requests and Sequelize to interface with your database. Likewise, you must use React, Redux and React-Redux on the front-end. This means that all important state (i.e. students and campuses) must be managed by the Redux store (unimportant state, like form data, may be managed by stateful React components). Components that display student/campus data should therefore be connected to the Redux store. 
+For this project, you must use Express to handle HTTP requests and Sequelize to interface with your database. Likewise, you must use React, Redux and React-Redux on the front-end. This means that all important state (i.e. students and campuses) must be managed by the Redux store (unimportant state, like form data, may be managed by stateful React components). Components that display student/campus data should therefore be connected to the Redux store.
 
 - other client side libraries you will need
 - redux
@@ -30,9 +31,8 @@ For this project, you must use Express to handle HTTP requests and Sequelize to 
 - the application needs to load without errors (blank screens are not acceptable)
 - do not copy and paste previous code!
 - you will have ample time to complete project, NO EXTENSIONS WILL BE GIVEN
-- build incrementally! 
+- build incrementally!
 - if you have an error, fix the error, before attempting to **add** functionality
-
 
 ### Views and Functionality
 
@@ -40,11 +40,9 @@ You can determine views and functionality from the requirements and wireframes s
 
 <img src='https://github.com/FullstackAcademy/jpfp-template-a-flex/blob/main/wireframes.png' />
 
-
-
 #### Seed
 
-- [ ] Write a sync function which sync's and seeds your database when your application starts 
+- [ ] Write a sync function which sync's and seeds your database when your application starts
 
 ### Tier 1: All Campuses and Students (20/61)
 
@@ -55,21 +53,19 @@ You can determine views and functionality from the requirements and wireframes s
 #### Backend Requirements
 
 - Write a `campuses` model with the following information:
-  - [ ] name - not empty or null
-  - [ ] imageUrl - string can be null 
-  - [ ] address - not empty or null
-  - [ ] description - extremely large text
+  - [x] name - not empty or null
+  - [x] imageUrl - string can be null
+  - [x] address - not empty or null
+  - [x] description - extremely large text
 - Write a `students` model with the following information:
-  - [ ] firstName - not empty or null
-  - [ ] lastName - not empty or null
-  - [ ] email - not empty or null; must be a valid email
-  - [ ] imageUrl - string can be null 
-  - [ ] gpa - decimal between 0.0 and 4.0
-- [ ] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
-
+  - [x] firstName - not empty or null
+  - [x] lastName - not empty or null
+  - [x] email - not empty or null; must be a valid email
+  - [x] imageUrl - string can be null
+  - [x] gpa - decimal between 0.0 and 4.0
+- [x] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
 
 ### Tier 2: Single Student and Single Campus (12/61)
-
 
 - Write a component to display a single campus with the following information:
   - [ ] The campus's name, image, address and description
@@ -86,9 +82,7 @@ You can determine views and functionality from the requirements and wireframes s
 - [ ] Clicking on the name of a student in the campus view should navigate to show that student in the student view
 - [ ] Clicking on the name of a campus in the student view should navigate to show that campus in the campus view
 
-
 ### Tier 3: Adding a Campus and Adding a Student (10/61)
-
 
 #### Frontend
 
@@ -105,10 +99,7 @@ You can determine views and functionality from the requirements and wireframes s
   - [ ] Make an AJAX request that causes the new student to be persisted in the database
   - [ ] Add the new student to the list of students without needing to refresh the page
 
-
-
 ### Tier 4: Removing a Campus and Removing a Student (8/61)
-
 
 #### Frontend
 
@@ -123,9 +114,7 @@ You can determine views and functionality from the requirements and wireframes s
   - [ ] Make an AJAX request that causes that student to be removed from database
   - [ ] Remove the student from the list of students without needing to refresh the page
 
-
 ### Tier 5: Updating a Campus and Updating a Student (11/61)
-
 
 #### Frontend
 
@@ -142,11 +131,7 @@ You can determine views and functionality from the requirements and wireframes s
   - [ ] Make an AJAX request that causes that student to be updated in the database
   - [ ] Update the student in the current view without needing to refresh the page
 
-
-
 ### Bonus Tier: Finishing Touches (23 EC)
-
-
 
 #### Finishing Touches
 
@@ -175,12 +160,7 @@ You can determine views and functionality from the requirements and wireframes s
 - [ ] Implement _back-end_ pagination for students (e.g. `/api/students?page=1` returns the first ten students' data, and `/api/students?page=2` returns students 11-20)
 - [ ] Implement _back-end_ pagination for campuses (e.g. `/api/campuses?page=1` returns the first ten campuses' data, and `/api/campuses?page=2` returns campuses 11-20)
 
-
 * `RUBRIC.md` - contains the grading rubric for additional factors, as well as the formula for calculating the total score
-
-
-
-
 
 ## Evaluation
 
