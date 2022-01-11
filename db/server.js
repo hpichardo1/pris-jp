@@ -3,8 +3,8 @@ const { STRING, DECIMAL, TEXT } = Sequelize;
 const db = new Sequelize(
   process.env.DATABASE_URL || "postgres://localhost/jpfp"
 );
-//const faker = require("faker");
-// console.log(faker.lorem.paragraph);
+const faker = require("faker");
+console.log(faker.lorem.paragraph);
 
 const Campuses = db.define("campus", {
   name: {
@@ -72,21 +72,21 @@ const campusData = [
     imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Dartmouth_College_campus_2007-10-20_09.JPG/800px-Dartmouth_College_campus_2007-10-20_09.JPG",
     address: "13456778 Driveway",
-    description: "abs",
+    description: faker.lorem.paragraphs(),
   },
   {
     name: "HelloWorld",
     imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Dartmouth_College_campus_2007-10-20_09.JPG/800px-Dartmouth_College_campus_2007-10-20_09.JPG",
     address: "188262 TurnPike",
-    description: "abc",
+    description: faker.lorem.paragraphs(),
   },
   {
     name: "NeverLand",
     imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Dartmouth_College_campus_2007-10-20_09.JPG/800px-Dartmouth_College_campus_2007-10-20_09.JPG",
     address: "123447 Highway",
-    description: "abc",
+    description: faker.lorem.paragraphs(),
   },
 ];
 
