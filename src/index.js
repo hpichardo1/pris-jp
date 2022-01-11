@@ -13,7 +13,7 @@ class _App extends Component {
   }
 
   render() {
-    console.log("****", this.props);
+    console.log("****", this.props.campuses);
     return (
       <>
         <h2>HI WORLD</h2>
@@ -23,8 +23,8 @@ class _App extends Component {
 }
 
 const mapState = (state) => {
-  console.log("-------", state);
-  return { state };
+  // console.log("-------", state);
+  return state;
 };
 const mapDispatch = (dispatch) => {
   return {
