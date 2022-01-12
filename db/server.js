@@ -167,6 +167,13 @@ const syncAndSeed = async () => {
   Nick.save();
   Sal.save();
   Ada.save();
+  /*
+  await Promise.all(
+    studentData.map((student) =>
+      student.update({ campusId: Math.floor(Math.random() * 3) })
+    )
+  );
+  */
 };
 
 module.exports = {

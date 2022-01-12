@@ -6,6 +6,8 @@ import axios from "axios";
 const initialState = {
   campuses: [],
   students: [],
+  singleStudent: {},
+  singleCampus: {},
 };
 
 //------- action creators
@@ -21,6 +23,20 @@ export function loadStudents(student) {
   return {
     type: "LOAD_STUDENTS",
     payload: student,
+  };
+}
+
+export function loadSingleStudent(student) {
+  return {
+    type: "LOAD_SINGLE_STUDENT",
+    payload: student,
+  };
+}
+
+export function loadSingleCampus(campus) {
+  return {
+    type: "LOAD_SINGLE_CAMPUS",
+    payload: campus,
   };
 }
 
@@ -40,6 +56,19 @@ export const _loadStudents = () => {
   };
 };
 
+export const _loadSingleStudent = (id) => {
+  return async (dispatch) => {
+    const singleStudent = (await axios.get(`/api/students/${id}`)).data;
+    dispatch(loadSingleStudent(singleStudent));
+  };
+};
+
+export const _loadSingleCampus = (id) => {
+  return async (dispatch) => {
+    const singleCampus = (await axios.get(`/api/campuses/${id}`)).data;
+    dispatch(loadSingleCampus(singleCampus));
+  };
+};
 //----------reducer
 
 const reducer = (state = initialState, action) => {
@@ -53,6 +82,16 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         students: action.payload,
+      };
+    case "LOAD_SINGLE_STUDENT":
+      return {
+        ...state,
+        singleStudent: action.payload,
+      };
+    case "LOAD_SINGLE_CAMPUS":
+      return {
+        ...state,
+        singleCampus: action.payload,
       };
     default:
       return state;

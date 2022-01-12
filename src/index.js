@@ -6,6 +6,7 @@ import { Provider, connect } from "react-redux";
 import Campuses from "./Campuses";
 import Students from "./Students";
 import Home from "./Home";
+import SingleCampus from "./SingleCampus";
 
 class _App extends Component {
   constructor() {
@@ -25,8 +26,9 @@ class _App extends Component {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/campuses" component={Campuses} />
+          <Route exact path="/campuses" component={Campuses} />
           <Route path="/students" component={Students} />
+          <Route exact path="/campuses/:id" component={SingleCampus} />
         </Switch>
       </>
     );

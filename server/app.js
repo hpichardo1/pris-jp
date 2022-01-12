@@ -30,4 +30,28 @@ app.get("/api/students", async (req, res, next) => {
   }
 });
 
+app.get("/api/campuses/:id", async (req, res, next) => {
+  try {
+    const campus = await Campuses.findOne({
+      include: Students,
+      where: { id: req.params.id },
+    });
+    res.send(campus);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.get("/api/students/:id", async (req, res, next) => {
+  try {
+    const student = await Students.findOne({
+      include: Campuses,
+      where: { id: req.params.id },
+    });
+    res.send(student);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = app;

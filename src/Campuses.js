@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 function Campuses({ campuses }) {
-  console.log(campuses);
+  //console.log(campuses);
   return (
     <>
       <h2>HELLO THIS IS CAMPUSES PAGE!!</h2>
