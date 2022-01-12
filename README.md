@@ -42,13 +42,13 @@ You can determine views and functionality from the requirements and wireframes s
 
 #### Seed
 
-- [ ] Write a sync function which sync's and seeds your database when your application starts
+- [x] Write a sync function which sync's and seeds your database when your application starts
 
 ### Tier 1: All Campuses and Students (20/61)
 
-- [ ] Display the campuses component when the url matches `/campuses`
-- [ ] Display the students component when the url matches `/students`
-- [ ] Add a links to the navbar that can be used to navigate to the campuses view and the students view
+- [x] Display the campuses component when the url matches `/campuses`
+- [x] Display the students component when the url matches `/students`
+- [x] Add a links to the navbar that can be used to navigate to the campuses view and the students view
 
 #### Backend Requirements
 

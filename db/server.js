@@ -93,7 +93,7 @@ const campusData = [
 const studentData = [
   {
     firstName: "Priscilla",
-    lastName: "kim",
+    lastName: "Kim",
     email: "hello123@yahoo.com",
     imageUrl:
       "https://i.etsystatic.com/15568096/r/il/e1ced4/2010945485/il_794xN.2010945485_a6x4.jpg",

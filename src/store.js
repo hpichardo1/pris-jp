@@ -54,6 +54,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         students: action.payload,
       };
+    default:
+      return state;
   }
 };
 
