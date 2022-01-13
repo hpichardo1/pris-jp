@@ -1,7 +1,50 @@
 import React, { Component, useEffect } from "react";
 import { connect } from "react-redux";
 import { _loadSingleCampus } from "./store";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+
+function SingleCampus(props) {
+  const { load_One_Campus, singleCampus } = props;
+  // const id = props.match.params.id;
+  // console.log("PROPS.ID", typeof id);
+  const { id } = useParams();
+  // console.log("!!!!!", typeof id);
+  //hook
+  useEffect(() => {
+    load_One_Campus(id);
+  }, [id]);
+  //console.log("!!!!!!", singleCampus.students);
+  return (
+    <>
+      <h1>SINGLE CAMPUS PAGE!!!!</h1>
+      <img src={singleCampus.imageUrl} />
+      <h3>NAME: {singleCampus.name}</h3>
+      <ul>
+        <li>ADDRESS: {singleCampus.address}</li>
+        <li>DESCRIPTION: {singleCampus.description}</li>
+      </ul>
+
+      <button>
+        <Link to="/campuses">BACK TO CAMPUSES</Link>
+      </button>
+    </>
+  );
+}
+
+const mapState = ({ singleCampus }) => {
+  //console.log(singleCampus);
+  return { singleCampus };
+};
+const mapDispatch = (dispatch) => {
+  return {
+    load_One_Campus: (id) => {
+      dispatch(_loadSingleCampus(id));
+    },
+  };
+};
+
+export default connect(mapState, mapDispatch)(SingleCampus);
+
 /*
 class SingleCampus extends Component {
   constructor() {
@@ -22,32 +65,3 @@ class SingleCampus extends Component {
   }
 }
 */
-
-function SingleCampus(props) {
-  const { load_One_Campus, SingleCampus } = props;
-  const id = props.match.params.id;
-  console.log(id);
-  //hook
-  useEffect(() => {
-    load_One_Campus(id);
-  }, [id]);
-  return (
-    <>
-      <h1>SINGLE CAMPUS PAGE!!!!</h1>
-    </>
-  );
-}
-
-const mapState = ({ SingleCampus }) => {
-  console.log({ SingleCampus });
-  return { SingleCampus };
-};
-const mapDispatch = (dispatch) => {
-  return {
-    load_One_Campus: (id) => {
-      dispatch(_loadSingleCampus(id));
-    },
-  };
-};
-
-export default connect(mapState, mapDispatch)(SingleCampus);

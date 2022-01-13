@@ -56,6 +56,7 @@ export const _loadStudents = () => {
   };
 };
 
+//-- thunks for loading single student & campus
 export const _loadSingleStudent = (id) => {
   return async (dispatch) => {
     const singleStudent = (await axios.get(`/api/students/${id}`)).data;

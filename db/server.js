@@ -70,21 +70,21 @@ const campusData = [
   {
     name: "Teta",
     imageUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Dartmouth_College_campus_2007-10-20_09.JPG/800px-Dartmouth_College_campus_2007-10-20_09.JPG",
+      "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     address: "13456778 Driveway",
     description: faker.lorem.paragraphs(),
   },
   {
     name: "HelloWorld",
     imageUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Dartmouth_College_campus_2007-10-20_09.JPG/800px-Dartmouth_College_campus_2007-10-20_09.JPG",
+      "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     address: "188262 TurnPike",
     description: faker.lorem.paragraphs(),
   },
   {
     name: "NeverLand",
     imageUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Dartmouth_College_campus_2007-10-20_09.JPG/800px-Dartmouth_College_campus_2007-10-20_09.JPG",
+      "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     address: "123447 Highway",
     description: faker.lorem.paragraphs(),
   },
@@ -96,7 +96,7 @@ const studentData = [
     lastName: "Kim",
     email: "hello123@yahoo.com",
     imageUrl:
-      "https://i.etsystatic.com/15568096/r/il/e1ced4/2010945485/il_794xN.2010945485_a6x4.jpg",
+      "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     gpa: 3.8,
     campusId: 1,
   },
@@ -114,7 +114,7 @@ const studentData = [
     lastName: "Cook",
     email: "avacooks124@gmail.com",
     imageUrl:
-      "https://www.clipartmax.com/png/middle/232-2325061_spongebob-squarepants-characters-fish.png",
+      "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     gpa: 2.5,
     campusId: 3,
   },
@@ -123,7 +123,7 @@ const studentData = [
     lastName: "Walker",
     email: "sally777@gmail.com",
     imageUrl:
-      "https://i.pinimg.com/originals/87/ce/b3/87ceb3d113d6bc156436be6b9e594c56.jpg",
+      "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     gpa: 3.2,
     campusId: 1,
   },
