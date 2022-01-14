@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { _deleteStudent } from "./store";
 
-function Students({ students }) {
+function Students({ students, delete_Student }) {
   return (
     <>
       <h2>HELLO THIS IS STUDENTS PAGE!!</h2>
-      <h3>STUDENTS:</h3>
+      <h3>STUDENTS: ({students.length})</h3>
       <ul>
         {students.map((student) => {
           //console.log(student);
@@ -15,6 +16,13 @@ function Students({ students }) {
               <Link to={`/students/${student.id}`}>
                 {student.firstName} {student.lastName}
               </Link>
+              <button
+                onClick={() => {
+                  delete_Student(student.id);
+                }}
+              >
+                X
+              </button>
             </li>
           );
         })}
@@ -31,4 +39,12 @@ const mapState = ({ students }) => {
   return { students };
 };
 
-export default connect(mapState)(Students);
+const mapDispatch = (dispatch) => {
+  return {
+    delete_Student: (id) => {
+      dispatch(_deleteStudent(id));
+    },
+  };
+};
+
+export default connect(mapState, mapDispatch)(Students);

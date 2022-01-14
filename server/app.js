@@ -54,4 +54,25 @@ app.get("/api/students/:id", async (req, res, next) => {
   }
 });
 
+//-----------delete API routes
+app.delete("/api/campuses/delete/:id", async (req, res, next) => {
+  try {
+    const deleteCampus = await Campuses.findByPk(req.params.id);
+    deleteCampus.destroy();
+    res.sendStatus(204);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.delete("/api/students/delete/:id", async (req, res, next) => {
+  try {
+    const deleteStudent = await Students.findByPk(req.params.id);
+    deleteStudent.destroy();
+    res.sendStatus(204);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = app;

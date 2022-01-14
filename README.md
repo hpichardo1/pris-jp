@@ -79,7 +79,7 @@ You can determine views and functionality from the requirements and wireframes s
 - [x] Display the appropriate student when the url matches `/students/:studentId`
 - [x] Clicking on a student from the students view should navigate to show that student
 
-- [ ] Clicking on the name of a student in the campus view should navigate to show that student in the student view
+- [x] Clicking on the name of a student in the campus view should navigate to show that student in the student view
 - [x] Clicking on the name of a campus in the student view should navigate to show that campus in the campus view
 
 ### Tier 3: Adding a Campus and Adding a Student (10/61)
@@ -103,15 +103,15 @@ You can determine views and functionality from the requirements and wireframes s
 
 #### Frontend
 
-- [ ] In the campuses view, include an `X` button next to each campus
+- [x] In the campuses view, include an `X` button next to each campus
 - Clicking the `X` button should:
 
-  - [ ] Make an AJAX request that causes that campus to be removed from database
+  - [x] Make an AJAX request that causes that campus to be removed from database
   - [ ] Remove the campus from the list of campuses without needing to refresh the page
 
-- [ ] In the students view, include an `X` button next to each student
+- [x] In the students view, include an `X` button next to each student
 - Clicking the `X` button should:
-  - [ ] Make an AJAX request that causes that student to be removed from database
+  - [x] Make an AJAX request that causes that student to be removed from database
   - [ ] Remove the student from the list of students without needing to refresh the page
 
 ### Tier 5: Updating a Campus and Updating a Student (11/61)

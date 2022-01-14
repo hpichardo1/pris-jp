@@ -14,18 +14,12 @@ function SingleCampus(props) {
   useEffect(() => {
     load_One_Campus(id);
   }, [id]);
-  console.log("!!!!!!", singleCampus.students);
-  console.log(
-    singleCampus.students
-      ? singleCampus.students.map((el) => el.id)
-      : "no students enrolled"
-  );
-
-  //!where i left off. Tier 2 complete but fix the link to when campuses have multiple students, link should render the person you click on
-
-  //! new plan:
-  // ? get studentId from single student
-
+  // console.log("!!!!!!", singleCampus.students);
+  // console.log(
+  //   singleCampus.students
+  //     ? singleCampus.students.map((el) => el.id)
+  //     : "no students enrolled"
+  // );
   return (
     <>
       <h1>SINGLE CAMPUS PAGE!!!!</h1>

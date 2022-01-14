@@ -20,7 +20,6 @@ class _App extends Component {
 
   render() {
     //console.log("****", this.props.students);
-    const { students } = this.props;
     return (
       <>
         <Switch>

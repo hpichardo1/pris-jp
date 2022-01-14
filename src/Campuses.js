@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { _deleteCampus } from "./store";
 
-function Campuses({ campuses }) {
+function Campuses({ campuses, delete_Campus }) {
   //console.log(campuses);
+  //console.log(delete_Campus);
+
   return (
     <>
       <h2>HELLO THIS IS CAMPUSES PAGE!!</h2>
-      <h3>CLIENTS:</h3>
+      <h3>CAMPUSES: ({campuses.length})</h3>
       <ul>
         {campuses.map((campus) => {
           return (
             <li key={campus.id}>
               <Link to={`/campuses/${campus.id}`}>{campus.name}</Link>
+              <button onClick={() => delete_Campus(campus.id)}>X</button>
             </li>
           );
         })}
@@ -28,4 +32,11 @@ const mapState = ({ campuses }) => {
   return { campuses };
 };
 
-export default connect(mapState)(Campuses);
+const mapDispatch = (dispatch) => {
+  return {
+    delete_Campus: (id) => {
+      dispatch(_deleteCampus(id));
+    },
+  };
+};
+export default connect(mapState, mapDispatch)(Campuses);

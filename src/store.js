@@ -40,6 +40,20 @@ export function loadSingleCampus(campus) {
   };
 }
 
+export function deleteCampus(id) {
+  return {
+    type: "DELETE_CAMPUS",
+    payload: id,
+  };
+}
+
+export function deleteStudent(id) {
+  return {
+    type: "DELETE_CAMPUS",
+    payload: id,
+  };
+}
+
 //-------thunks
 
 export const _loadCampuses = () => {
@@ -70,6 +84,20 @@ export const _loadSingleCampus = (id) => {
     dispatch(loadSingleCampus(singleCampus));
   };
 };
+
+export const _deleteCampus = (id) => {
+  return async (dispatch) => {
+    const campus = await axios.delete(`/api/campuses/delete/${id}`);
+    dispatch(deleteCampus(campus));
+  };
+};
+
+export const _deleteStudent = (id) => {
+  return async (dispatch) => {
+    const student = await axios.delete(`/api/students/delete/${id}`);
+    dispatch(deleteStudent(student));
+  };
+};
 //----------reducer
 
 const reducer = (state = initialState, action) => {
@@ -93,6 +121,22 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         singleCampus: action.payload,
+      };
+
+    case "DELETE_CAMPUS":
+      console.log("AHHHHHHH", action.payload);
+      state = {
+        ...state,
+        campuses: state.campuses.filter((campus) => {
+          return campus.id !== action.payload;
+        }),
+      };
+    case "DELETE_STUDENT":
+      state = {
+        ...state,
+        students: state.students.filter((student) => {
+          return student.id !== action.payload;
+        }),
       };
     default:
       return state;

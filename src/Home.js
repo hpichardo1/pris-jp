@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function Home() {
+function Home({ campuses, students }) {
   return (
     <>
       <nav>
-        <Link to="/campuses">CAMPUSES </Link>
-        <Link to="/students"> STUDENTS</Link>
+        <Link to="/campuses">CAMPUSES ({campuses.length})</Link>
+        <Link to="/students"> STUDENTS ({students.length})</Link>
       </nav>
       <div>
         <h1>HOME PAGE!!!</h1>
@@ -16,4 +16,8 @@ function Home() {
   );
 }
 
-export default Home;
+const mapstate = ({ campuses, students }) => {
+  return { campuses, students };
+};
+
+export default connect(mapstate)(Home);
