@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { _loadSingleCampus } from "./store";
 import { useParams, Link } from "react-router-dom";
@@ -7,13 +7,25 @@ function SingleCampus(props) {
   const { load_One_Campus, singleCampus } = props;
   // const id = props.match.params.id;
   // console.log("PROPS.ID", typeof id);
+
   const { id } = useParams();
   // console.log("!!!!!", typeof id);
   //hook
   useEffect(() => {
     load_One_Campus(id);
   }, [id]);
-  //console.log("!!!!!!", singleCampus.students);
+  console.log("!!!!!!", singleCampus.students);
+  console.log(
+    singleCampus.students
+      ? singleCampus.students.map((el) => el.id)
+      : "no students enrolled"
+  );
+
+  //!where i left off. Tier 2 complete but fix the link to when campuses have multiple students, link should render the person you click on
+
+  //! new plan:
+  // ? get studentId from single student
+
   return (
     <>
       <h1>SINGLE CAMPUS PAGE!!!!</h1>
@@ -22,6 +34,16 @@ function SingleCampus(props) {
       <ul>
         <li>ADDRESS: {singleCampus.address}</li>
         <li>DESCRIPTION: {singleCampus.description}</li>
+        <li>
+          ENROLLED STUDENTS:{" "}
+          {singleCampus.students && singleCampus.students.length !== 0
+            ? singleCampus.students.map((el) => (
+                <li key={el.id}>
+                  <Link to={`/students/${el.id}`}>{el.firstName}</Link>
+                </li>
+              ))
+            : "no students enrolled"}
+        </li>
       </ul>
 
       <button>
@@ -32,7 +54,6 @@ function SingleCampus(props) {
 }
 
 const mapState = ({ singleCampus }) => {
-  //console.log(singleCampus);
   return { singleCampus };
 };
 const mapDispatch = (dispatch) => {

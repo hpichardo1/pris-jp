@@ -88,6 +88,13 @@ const campusData = [
     address: "123447 Highway",
     description: faker.lorem.paragraphs(),
   },
+  {
+    name: "DataDeck",
+    imageUrl:
+      "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
+    address: "777 Nabi Ave",
+    description: faker.lorem.paragraphs(),
+  },
 ];
 
 const studentData = [

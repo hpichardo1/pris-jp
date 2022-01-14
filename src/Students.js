@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 function Students({ students }) {
-  console.log(students);
   return (
     <>
       <h2>HELLO THIS IS STUDENTS PAGE!!</h2>
       <h3>STUDENTS:</h3>
       <ul>
         {students.map((student) => {
+          //console.log(student);
           return (
             <li key={student.id}>
               <Link to={`/students/${student.id}`}>
@@ -27,6 +27,7 @@ function Students({ students }) {
 }
 
 const mapState = ({ students }) => {
+  //console.log({ students });
   return { students };
 };
 

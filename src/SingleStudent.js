@@ -4,14 +4,17 @@ import { _loadSingleStudent } from "./store";
 import { useParams, Link } from "react-router-dom";
 
 function SingleStudent(props) {
-  const { load_One_Student, singleStudent } = props;
+  const { load_One_Student, singleStudent, location } = props;
   const { id } = useParams();
-  //console.log(id);
+  //console.log("STUDENT ID", id);
 
   useEffect(() => {
     load_One_Student(id);
   }, [id]);
-  console.log(singleStudent.campus);
+  // console.log(
+  //   "????",
+  //   singleStudent.campusId ? singleStudent.campus.name : "idk nothing"
+  // );
   return (
     <>
       <h1>SINGLE STUDENT PAGE!!!</h1>
@@ -23,6 +26,14 @@ function SingleStudent(props) {
       <ul>
         <li>email: {singleStudent.email}</li>
         <li>GPA: {singleStudent.gpa}</li>
+        {/* is this student enrolled in a campus, meaning they have a campusId? if so return the campus name */}
+        <li>
+          {" "}
+          Attends:{" "}
+          <Link to={`/campuses/${singleStudent.campusId}`}>
+            {singleStudent.campusId ? singleStudent.campus.name : "...??"}
+          </Link>
+        </li>
       </ul>
 
       <button>
@@ -33,7 +44,6 @@ function SingleStudent(props) {
 }
 
 const mapState = ({ singleStudent }) => {
-  console.log(singleStudent);
   return { singleStudent };
 };
 
