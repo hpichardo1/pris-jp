@@ -85,17 +85,18 @@ export const _loadSingleCampus = (id) => {
   };
 };
 
+//---- delete thunks
 export const _deleteCampus = (id) => {
   return async (dispatch) => {
-    const campus = await axios.delete(`/api/campuses/delete/${id}`);
-    dispatch(deleteCampus(campus));
+    await axios.delete(`/api/campuses/${id}`);
+    dispatch(deleteCampus(id));
   };
 };
 
 export const _deleteStudent = (id) => {
   return async (dispatch) => {
-    const student = await axios.delete(`/api/students/delete/${id}`);
-    dispatch(deleteStudent(student));
+    await axios.delete(`/api/students/${id}`);
+    dispatch(deleteStudent(id));
   };
 };
 //----------reducer
@@ -122,9 +123,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         singleCampus: action.payload,
       };
-
     case "DELETE_CAMPUS":
-      console.log("AHHHHHHH", action.payload);
+      // console.log("AHHHHHHH", action.payload);
       state = {
         ...state,
         campuses: state.campuses.filter((campus) => {

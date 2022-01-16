@@ -1,12 +1,9 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { _deleteCampus } from "./store";
+import { _deleteCampus, _deleteStudent } from "./store";
 
 function Campuses({ campuses, delete_Campus }) {
-  //console.log(campuses);
-  //console.log(delete_Campus);
-
   return (
     <>
       <h2>HELLO THIS IS CAMPUSES PAGE!!</h2>
@@ -34,7 +31,7 @@ const mapState = ({ campuses }) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    delete_Campus: (id) => {
+    delete_Campus: async (id) => {
       dispatch(_deleteCampus(id));
     },
   };

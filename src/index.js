@@ -37,7 +37,7 @@ class _App extends Component {
 }
 
 const mapState = (state) => {
-  // console.log("STATE", state);
+  //console.log("STATE", state);
   return state;
 };
 
