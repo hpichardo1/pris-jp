@@ -33,7 +33,7 @@ app.get("/api/students", async (req, res, next) => {
 app.get("/api/campuses/:id", async (req, res, next) => {
   try {
     const campus = await Campuses.findOne({
-      include: [Students],
+      include: Students,
       where: { id: req.params.id },
     });
     res.send(campus);
@@ -45,7 +45,7 @@ app.get("/api/campuses/:id", async (req, res, next) => {
 app.get("/api/students/:id", async (req, res, next) => {
   try {
     const student = await Students.findOne({
-      include: [Campuses],
+      include: Campuses,
       where: { id: req.params.id },
     });
     res.send(student);
@@ -70,6 +70,24 @@ app.delete("/api/students/:id", async (req, res, next) => {
     const deleteStudent = await Students.findByPk(req.params.id);
     await deleteStudent.destroy();
     res.sendStatus(204);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//------ form routes
+
+app.post("/api/campuses", async (req, res, next) => {
+  try {
+    res.send(await Campuses.create(req.body));
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.post("/api/students", async (req, res, next) => {
+  try {
+    res.send(await Students.create(req.body));
   } catch (error) {
     next(error);
   }

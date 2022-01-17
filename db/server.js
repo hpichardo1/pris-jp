@@ -68,28 +68,28 @@ const Students = db.define("student", {
 
 const campusData = [
   {
-    name: "Teta",
+    name: "Teta Academy",
     imageUrl:
       "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     address: "13456778 Driveway",
     description: faker.lorem.paragraphs(),
   },
   {
-    name: "HelloWorld",
+    name: "Hello World",
     imageUrl:
       "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     address: "188262 TurnPike",
     description: faker.lorem.paragraphs(),
   },
   {
-    name: "NeverLand",
+    name: "Never Land",
     imageUrl:
       "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     address: "123447 Highway",
     description: faker.lorem.paragraphs(),
   },
   {
-    name: "DataDeck",
+    name: "Data Deck",
     imageUrl:
       "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     address: "777 Nabi Ave",
@@ -145,16 +145,26 @@ Campuses.hasMany(Students);
 const syncAndSeed = async () => {
   await db.sync({ force: true });
 
-  const [Teta, HelloWorld, NeverLand] = await Promise.all(
-    campusData.map((el) =>
-      Campuses.create({
-        name: el.name,
-        imageUrl: el.imageUrl,
-        address: el.address,
-        description: el.description,
-      })
-    )
-  );
+  // const [Teta, HelloWorld, NeverLand] = await Promise.all(
+  //   campusData.map((el) =>
+  //     Campuses.create({
+  //       name: el.name,
+  //       imageUrl: el.imageUrl,
+  //       address: el.address,
+  //       description: el.description,
+  //     })
+  //   )
+  // );
+
+  campusData.forEach(async (el) => {
+    await Campuses.create({
+      name: el.name,
+      imageUrl: el.name,
+      address: el.address,
+      description: el.description,
+    });
+  });
+
   const [Priscilla, Nick, Sal, Ada] = await Promise.all(
     studentData.map((el) =>
       Students.create({
@@ -166,10 +176,10 @@ const syncAndSeed = async () => {
       })
     )
   );
-  Priscilla.campusId = Teta.id;
-  Nick.campusId = HelloWorld.id;
-  Sal.campusId = NeverLand.id;
-  Ada.campusId = Teta.id;
+  Priscilla.campusId = 1;
+  Nick.campusId = 2;
+  Sal.campusId = 2;
+  Ada.campusId = 3;
   Priscilla.save();
   Nick.save();
   Sal.save();

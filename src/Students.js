@@ -1,48 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { _deleteStudent } from "./store";
-
-/*
-function Students({ students, delete_Student }) {
-  return (
-    <>
-      <h2>HELLO THIS IS STUDENTS PAGE!!</h2>
-      <h3>STUDENTS: ({students.length})</h3>
-      <ul>
-        {students.map((student) => {
-          //console.log(student);
-          return (
-            <li key={student.id}>
-              <Link to={`/students/${student.id}`}>
-                {student.firstName} {student.lastName}
-              </Link>
-              <button
-                onClick={() => {
-                  delete_Student(student.id);
-                }}
-                // !where i left off, delete routes work, may have to use class component tho bc it doesnt work with functional component without hard reload
-              >
-                X
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-      <button>
-        <Link to="/">BACK TO HOME</Link>
-      </button>
-    </>
-  );
-}
-*/
+import { _deleteStudent, _loadStudents } from "./store";
 
 class Students extends Component {
   constructor() {
     super();
   }
+  // MOUNTED THE STUDENTS
+  // async componentDidMount() {
+  //   await this.props.load_Students();
+  // }
+
   render() {
-    const { students, delete_Student } = this.props;
+    const { students } = this.props;
     return (
       <>
         <h2>HELLO THIS IS STUDENTS PAGE!!</h2>
@@ -55,11 +26,11 @@ class Students extends Component {
                 <Link to={`/students/${student.id}`}>
                   {student.firstName} {student.lastName}
                 </Link>
+
                 <button
                   onClick={() => {
-                    delete_Student(student.id);
+                    this.props.delete_Student(student.id);
                   }}
-                  // !where i left off, delete routes work, may have to use class component tho bc it doesnt work with functional component without hard reload
                 >
                   X
                 </button>
@@ -67,6 +38,10 @@ class Students extends Component {
             );
           })}
         </ul>
+        <form>
+          <input type="text"></input>
+        </form>
+
         <button>
           <Link to="/">BACK TO HOME</Link>
         </button>
@@ -85,6 +60,9 @@ const mapDispatch = (dispatch) => {
     delete_Student: (id) => {
       dispatch(_deleteStudent(id));
     },
+    // load_Students: () => {
+    //   dispatch(_loadStudents());
+    // },
   };
 };
 

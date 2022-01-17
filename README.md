@@ -107,12 +107,12 @@ You can determine views and functionality from the requirements and wireframes s
 - Clicking the `X` button should:
 
   - [x] Make an AJAX request that causes that campus to be removed from database
-  - [ ] Remove the campus from the list of campuses without needing to refresh the page
+  - [x] Remove the campus from the list of campuses without needing to refresh the page
 
 - [x] In the students view, include an `X` button next to each student
 - Clicking the `X` button should:
   - [x] Make an AJAX request that causes that student to be removed from database
-  - [ ] Remove the student from the list of students without needing to refresh the page
+  - [x] Remove the student from the list of students without needing to refresh the page
 
 ### Tier 5: Updating a Campus and Updating a Student (11/61)
 

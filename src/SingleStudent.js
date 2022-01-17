@@ -4,7 +4,7 @@ import { _loadSingleStudent } from "./store";
 import { useParams, Link } from "react-router-dom";
 
 function SingleStudent(props) {
-  const { load_One_Student, singleStudent, location } = props;
+  const { load_One_Student, singleStudent } = props;
   const { id } = useParams();
   //console.log("STUDENT ID", id);
 
@@ -31,7 +31,9 @@ function SingleStudent(props) {
           {" "}
           Attends:{" "}
           <Link to={`/campuses/${singleStudent.campusId}`}>
-            {singleStudent.campusId ? singleStudent.campus.name : "...??"}
+            {singleStudent.campusId
+              ? singleStudent.campus.name
+              : "NOT ENROLLED"}
           </Link>
         </li>
       </ul>

@@ -49,8 +49,22 @@ export function deleteCampus(id) {
 
 export function deleteStudent(id) {
   return {
-    type: "DELETE_CAMPUS",
+    type: "DELETE_STUDENT",
     payload: id,
+  };
+}
+
+export function addCampus(campus) {
+  return {
+    type: "ADD_CAMPUS",
+    payload: campus,
+  };
+}
+
+export function addStudent(student) {
+  return {
+    type: "ADD_STUDENT",
+    payload: student,
   };
 }
 
@@ -99,6 +113,25 @@ export const _deleteStudent = (id) => {
     dispatch(deleteStudent(id));
   };
 };
+
+//-------- form thunks
+
+export const _addCampus = (campus, history) => {
+  return async (dispatch) => {
+    const newCampus = await axios.post("/api/campuses", campus).data;
+    dispatch(addCampus(newCampus));
+    // history.push("/campuses");
+  };
+};
+
+export const _addStudents = (student, history) => {
+  return async (dispatch) => {
+    const newStudent = (await axios.post("/api/students", student)).data;
+    dispatch(addStudent(newStudent));
+    //history.push("/students");
+  };
+};
+
 //----------reducer
 
 const reducer = (state = initialState, action) => {
@@ -124,19 +157,29 @@ const reducer = (state = initialState, action) => {
         singleCampus: action.payload,
       };
     case "DELETE_CAMPUS":
-      // console.log("AHHHHHHH", action.payload);
-      state = {
+      console.log("AHHHHHHH", action.payload);
+      return {
         ...state,
         campuses: state.campuses.filter((campus) => {
           return campus.id !== action.payload;
         }),
       };
     case "DELETE_STUDENT":
-      state = {
+      return {
         ...state,
         students: state.students.filter((student) => {
           return student.id !== action.payload;
         }),
+      };
+    case "ADD_CAMPUS":
+      return {
+        ...state,
+        campuses: [...state.campuses, action.payload],
+      };
+    case "ADD_STUDENT":
+      return {
+        ...state,
+        students: [...state.students, action.payload],
       };
     default:
       return state;
