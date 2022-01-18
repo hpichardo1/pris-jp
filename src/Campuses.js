@@ -36,7 +36,7 @@ class Campuses extends Component {
   // }
   render() {
     const { campuses } = this.props;
-    //console.log(this.props.delete_Campus);
+    console.log(campuses);
     return (
       <>
         <h2>HELLO THIS IS CAMPUSES PAGE!!</h2>

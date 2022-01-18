@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Router, Switch, Route } from "react-router-dom";
 import { _deleteStudent, _loadStudents } from "./store";
+import CampusForm from "./CampusForm";
 
 class Students extends Component {
   constructor() {
@@ -38,9 +39,9 @@ class Students extends Component {
             );
           })}
         </ul>
-        <form>
-          <input type="text"></input>
-        </form>
+        {/* route for forms then display form component */}
+        <CampusForm />
+        <div></div>
 
         <button>
           <Link to="/">BACK TO HOME</Link>

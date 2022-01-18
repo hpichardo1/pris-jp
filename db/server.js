@@ -68,28 +68,28 @@ const Students = db.define("student", {
 
 const campusData = [
   {
-    name: "Teta Academy",
+    name: "Teta",
     imageUrl:
       "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     address: "13456778 Driveway",
     description: faker.lorem.paragraphs(),
   },
   {
-    name: "Hello World",
+    name: "HelloWorld",
     imageUrl:
       "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     address: "188262 TurnPike",
     description: faker.lorem.paragraphs(),
   },
   {
-    name: "Never Land",
+    name: "NeverLand",
     imageUrl:
       "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     address: "123447 Highway",
     description: faker.lorem.paragraphs(),
   },
   {
-    name: "Data Deck",
+    name: "DataDeck ",
     imageUrl:
       "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     address: "777 Nabi Ave",
@@ -105,7 +105,7 @@ const studentData = [
     imageUrl:
       "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     gpa: 3.8,
-    campusId: 1,
+    //campusId: 1,
   },
   {
     firstName: "Nick",
@@ -114,7 +114,7 @@ const studentData = [
     imageUrl:
       "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     gpa: 3.5,
-    campusId: 2,
+    //campusId: 2,
   },
   {
     firstName: "Ada",
@@ -123,7 +123,7 @@ const studentData = [
     imageUrl:
       "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     gpa: 2.5,
-    campusId: 3,
+    //campusId: 3,
   },
   {
     firstName: "Sal",
@@ -132,7 +132,7 @@ const studentData = [
     imageUrl:
       "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     gpa: 3.2,
-    campusId: 1,
+    //campusId: 1,
   },
 ];
 
@@ -145,25 +145,25 @@ Campuses.hasMany(Students);
 const syncAndSeed = async () => {
   await db.sync({ force: true });
 
-  // const [Teta, HelloWorld, NeverLand] = await Promise.all(
-  //   campusData.map((el) =>
-  //     Campuses.create({
-  //       name: el.name,
-  //       imageUrl: el.imageUrl,
-  //       address: el.address,
-  //       description: el.description,
-  //     })
-  //   )
-  // );
+  const [Teta, HelloWorld, NeverLand, DataDeck] = await Promise.all(
+    campusData.map((el) =>
+      Campuses.create({
+        name: el.name,
+        imageUrl: el.imageUrl,
+        address: el.address,
+        description: el.description,
+      })
+    )
+  );
 
-  campusData.forEach(async (el) => {
-    await Campuses.create({
-      name: el.name,
-      imageUrl: el.name,
-      address: el.address,
-      description: el.description,
-    });
-  });
+  // campusData.forEach(async (el) => {
+  //   await Campuses.create({
+  //     name: el.name,
+  //     imageUrl: el.name,
+  //     address: el.address,
+  //     description: el.description,
+  //   });
+  // });
 
   const [Priscilla, Nick, Sal, Ada] = await Promise.all(
     studentData.map((el) =>
