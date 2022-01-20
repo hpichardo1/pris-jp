@@ -7,6 +7,8 @@ const {
 const app = express();
 
 // static middleware
+app.use(express.json());
+
 app.use("/dist", express.static(path.join(__dirname, "../dist")));
 app.use(express.static(path.join(__dirname, "../public")));
 
@@ -29,6 +31,8 @@ app.get("/api/students", async (req, res, next) => {
     console.log(error);
   }
 });
+
+//try another route without includes
 
 app.get("/api/campuses/:id", async (req, res, next) => {
   try {

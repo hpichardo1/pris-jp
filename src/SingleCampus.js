@@ -32,11 +32,13 @@ function SingleCampus(props) {
           ENROLLED STUDENTS:{" "}
           {singleCampus.students && singleCampus.students.length !== 0
             ? singleCampus.students.map((el) => (
-                <li key={el.id}>
-                  <Link to={`/students/${el.id}`}>{el.firstName}</Link>
-                </li>
+                <ul key={el.id}>
+                  <li>
+                    <Link to={`/students/${el.id}`}>{el.firstName}</Link>{" "}
+                  </li>
+                </ul>
               ))
-            : "no students enrolled"}
+            : "Currently no students enrolled"}
         </li>
       </ul>
 

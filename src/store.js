@@ -118,9 +118,9 @@ export const _deleteStudent = (id) => {
 
 export const _addCampus = (campus, history) => {
   return async (dispatch) => {
-    const newCampus = await axios.post("/api/campuses", campus).data;
+    const newCampus = (await axios.post("/api/campuses", campus)).data;
     dispatch(addCampus(newCampus));
-    // history.push("/campuses");
+    history.push("/campuses");
   };
 };
 

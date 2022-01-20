@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link, Router, Switch, Route } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import { _deleteStudent, _loadStudents } from "./store";
-import CampusForm from "./CampusForm";
+import StudentsForm from "./StudentsForm";
 
 class Students extends Component {
   constructor() {
@@ -14,34 +14,46 @@ class Students extends Component {
   // }
 
   render() {
-    const { students } = this.props;
+    const { students, campuses } = this.props;
+    console.log(campuses);
+    console.log(students);
     return (
       <>
-        <h2>HELLO THIS IS STUDENTS PAGE!!</h2>
         <h3>STUDENTS: ({students.length ? students.length : ""})</h3>
         <ul>
           {students.map((student) => {
-            //console.log(student);
             return (
               <li key={student.id}>
-                <Link to={`/students/${student.id}`}>
-                  {student.firstName} {student.lastName}
-                </Link>
-
-                <button
-                  onClick={() => {
-                    this.props.delete_Student(student.id);
-                  }}
-                >
-                  X
-                </button>
+                <div>
+                  {student.firstName} {` `}
+                  {student.campusId === undefined
+                    ? ""
+                    : campuses.map((campus) =>
+                        student.campusId === campus.id
+                          ? "attends " + campus.name
+                          : "is currently not enrolled"
+                      )[0]}{" "}
+                  <button
+                    onClick={() => {
+                      this.props.delete_Student(student.id);
+                    }}
+                  >
+                    X
+                  </button>
+                </div>
+                <ul>
+                  <li>
+                    <Link to={`/students/${student.id}`}>
+                      {/* {student.firstName} {student.lastName} */}
+                      details for {student.firstName}
+                    </Link>
+                  </li>
+                </ul>
               </li>
             );
           })}
         </ul>
-        {/* route for forms then display form component */}
-        <CampusForm />
-        <div></div>
+        <Route exact path="/students" component={StudentsForm} />
 
         <button>
           <Link to="/">BACK TO HOME</Link>
@@ -51,9 +63,9 @@ class Students extends Component {
   }
 }
 
-const mapState = ({ students }) => {
+const mapState = ({ students, campuses }) => {
   //console.log({ students });
-  return { students };
+  return { students, campuses };
 };
 
 const mapDispatch = (dispatch) => {

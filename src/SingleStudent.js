@@ -22,19 +22,20 @@ function SingleStudent(props) {
       <h3>
         NAME: {singleStudent.firstName} {singleStudent.lastName}
       </h3>
-      <h2>ATTENDS:</h2>
+
       <ul>
         <li>email: {singleStudent.email}</li>
         <li>GPA: {singleStudent.gpa}</li>
         {/* is this student enrolled in a campus, meaning they have a campusId? if so return the campus name */}
         <li>
-          {" "}
           Attends:{" "}
-          <Link to={`/campuses/${singleStudent.campusId}`}>
-            {singleStudent.campusId
-              ? singleStudent.campus.name
-              : "NOT ENROLLED"}
-          </Link>
+          {singleStudent.campusId ? (
+            <Link to={`/campuses/${singleStudent.campusId}`}>
+              {singleStudent.campus.name}
+            </Link>
+          ) : (
+            " Currently not enrolled "
+          )}
         </li>
       </ul>
 
