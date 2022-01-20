@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { _loadSingleCampus } from "./store";
 import { useParams, Link } from "react-router-dom";
+import UpdateCampus from "./updateCampus";
 
 function SingleCampus(props) {
   const { load_One_Campus, singleCampus } = props;
@@ -41,7 +42,7 @@ function SingleCampus(props) {
             : "Currently no students enrolled"}
         </li>
       </ul>
-
+      <Link to={`/campuses/${singleCampus.id}/edit`}>EDIT CAMPUS</Link>
       <button>
         <Link to="/campuses">BACK TO CAMPUSES</Link>
       </button>

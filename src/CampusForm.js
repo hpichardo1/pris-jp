@@ -66,7 +66,7 @@ class CampusForm extends Component {
                 <td>Name:</td>
                 <td>
                   {" "}
-                  <input type="text" name="name" onChange={changeName} />
+                  <input value={name} name="name" onChange={changeName} />
                 </td>
               </tr>
               <tr>

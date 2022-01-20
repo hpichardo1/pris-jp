@@ -6,11 +6,16 @@ const {
 
 const app = express();
 
-// static middleware
+// very important middleware for put and post routes
 app.use(express.json());
 
 app.use("/dist", express.static(path.join(__dirname, "../dist")));
 app.use(express.static(path.join(__dirname, "../public")));
+
+//error middleware
+// app.use((err, req, res, next) => {
+//   res.status(500).send({ error: err });
+// });
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
@@ -92,6 +97,26 @@ app.post("/api/campuses", async (req, res, next) => {
 app.post("/api/students", async (req, res, next) => {
   try {
     res.send(await Students.create(req.body));
+  } catch (error) {
+    next(error);
+  }
+});
+
+//---------- edit routes
+
+app.put("/api/campuses/:id", async (req, res, next) => {
+  try {
+    const campus = await Campuses.findByPk(req.params.id);
+    res.send(await campus.update(req.body));
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.put("/api/students/:id", async (req, res, next) => {
+  try {
+    const student = await Students.findByPk(req.params.id);
+    res.send(await student.update(req.body));
   } catch (error) {
     next(error);
   }

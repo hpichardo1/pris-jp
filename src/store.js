@@ -68,6 +68,20 @@ export function addStudent(student) {
   };
 }
 
+function editCampus(campus) {
+  return {
+    type: "EDIT_CAMPUS",
+    payload: campus,
+  };
+}
+
+function editStudent(student) {
+  return {
+    type: "EDIT_STUDENT",
+    payload: student,
+  };
+}
+
 //-------thunks
 
 export const _loadCampuses = () => {
@@ -132,6 +146,23 @@ export const _addStudents = (student, history) => {
   };
 };
 
+//------- update thunks
+
+export const _editCampus = (id, campus) => {
+  return async (dispatch) => {
+    const updateCampus = (await axios.put(`/api/campuses/${id}`, campus)).data;
+    dispatch(editCampus(updateCampus));
+  };
+};
+
+export const _editStudent = (student) => {
+  return async (dispatch) => {
+    const updateStudent = (await axios.put(`/api/students/${id}`, student))
+      .data;
+    dispatch(editStudent(updateStudent));
+  };
+};
+
 //----------reducer
 
 const reducer = (state = initialState, action) => {
@@ -157,7 +188,6 @@ const reducer = (state = initialState, action) => {
         singleCampus: action.payload,
       };
     case "DELETE_CAMPUS":
-      console.log("AHHHHHHH", action.payload);
       return {
         ...state,
         campuses: state.campuses.filter((campus) => {
@@ -180,6 +210,20 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         students: [...state.students, action.payload],
+      };
+    case "EDIT_CAMPUS":
+      return {
+        ...state,
+        campuses: state.campuses.map((campus) =>
+          campus.id !== action.payload.id ? campus : action.payload
+        ),
+      };
+    case "EDIT_STUDENT":
+      return {
+        ...state,
+        students: state.students.map((student) =>
+          student.id !== action.payload.id ? student : action.payload
+        ),
       };
     default:
       return state;

@@ -41,7 +41,7 @@ class Campuses extends Component {
 
     return (
       <>
-        <h3>CAMPUSES: ({campuses.length})</h3>
+        <h3 id="campusHeading">CAMPUSES: ({campuses.length})</h3>
         <section id="campuses">
           <div>
             {campuses.map((campus) => {

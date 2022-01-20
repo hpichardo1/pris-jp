@@ -8,6 +8,7 @@ import Students from "./Students";
 import Home from "./Home";
 import SingleCampus from "./SingleCampus";
 import SingleStudent from "./SingleStudent";
+import UpdateCampus from "./updateCampus";
 
 class _App extends Component {
   constructor() {
@@ -30,6 +31,7 @@ class _App extends Component {
           <Route exact path="/students" component={Students} />
           <Route exact path="/campuses/:id" component={SingleCampus} />
           <Route exact path="/students/:id" component={SingleStudent} />
+          <Route exact path="/campuses/:id/edit" component={UpdateCampus} />
         </Switch>
       </>
     );
