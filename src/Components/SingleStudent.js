@@ -12,10 +12,7 @@ function SingleStudent(props) {
   useEffect(() => {
     load_One_Student(id);
   }, [id]);
-  // console.log(
-  //   "????",
-  //   singleStudent.campusId ? singleStudent.campus?.name : "idk nothing"
-  // );
+
   console.log("PROPS", props);
   return (
     <>

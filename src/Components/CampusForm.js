@@ -12,7 +12,7 @@ import { _addCampus } from "../store";
 class CampusForm extends Component {
   constructor() {
     super();
-    //local state in campusForm
+
     this.state = {
       name: "",
       imageUrl: "",
@@ -41,8 +41,6 @@ class CampusForm extends Component {
   }
 
   onSubmit(ev) {
-    //allows us to prevent the default
-    //basically the save button
     ev.preventDefault();
     this.props.addCampus(this.state);
     this.setState({
@@ -62,7 +60,7 @@ class CampusForm extends Component {
       changeAddress,
       changeDescription,
     } = this;
-    //console.log(this.props.addCampus);
+
     return (
       <>
         <form onSubmit={onSubmit} className="form">

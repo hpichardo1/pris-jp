@@ -20,7 +20,6 @@ class _App extends Component {
   }
 
   render() {
-    //console.log("****", this.props.students);
     return (
       <div id="mainPage">
         <Switch>
@@ -39,7 +38,6 @@ class _App extends Component {
 }
 
 const mapState = (state) => {
-  //console.log("STATE", state);
   return state;
 };
 
@@ -64,8 +62,3 @@ render(
   </Provider>,
   document.querySelector("#root")
 );
-
-//questions
-//changing db campuses names, gets error on http for campuses with spaces
-//forms
-//

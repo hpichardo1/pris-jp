@@ -8,9 +8,7 @@ class Campuses extends Component {
   constructor() {
     super();
   }
-  // async componentDidMount() {
-  //   await this.props.load_Campuses();
-  // }
+
   render() {
     const { campuses, students } = this.props;
     console.log(campuses);

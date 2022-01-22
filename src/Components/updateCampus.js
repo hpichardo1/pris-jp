@@ -13,17 +13,17 @@ class UpdateCampus extends Component {
         ? this.props.singleCampus.description
         : "",
     };
-    //console.log("------", this.props.singleCampus);
+
     this.onSubmit = this.onSubmit.bind(this);
     this.changeName = this.changeName.bind(this);
   }
   componentDidUpdate(prevProps) {
-    //meaning if it wasnt there before and now you hav the current singleCampus.id
+
     if (!prevProps.singleCampus.id && this.props.singleCampus) {
       const { name, imageUrl, address, description } = this.props.singleCampus;
       this.setState({ name, imageUrl, address, description });
     }
-    //console.log(this.props);
+
   }
   onSubmit(ev, history) {
     ev.preventDefault();
@@ -81,39 +81,13 @@ class UpdateCampus extends Component {
   }
 }
 
-// const mapState = (state, otherProps) => {
-//   const campus = state.campuses.find(
-//     ((campus) => campus.id === otherProps.match.params.id * 1) || {}
-//   );
-//   console.log("??????", campus.id);
-//   return {
-//     campus,
-//   };
-// };
-
-// const mapDispatch = (dispatch) => {
-//   return {
-//     updateCampus: (id, campus) => {
-//       dispatch(_singleCampus(id, campus));
-//     },
-//   };
-// };
-
 export default connect(
   (state) => {
     return {
       singleCampus: state.singleCampus,
     };
   },
-  // (state, otherProps) => {
-  //   const editCampus = state.campuses.find(
-  //     ((campus) => campus.id === otherProps.match.params.id * 1) || {}
-  //   );
-  //   console.log("!!!!!!!!!!!!!!", editCampus);
-  //   return {
-  //     editCampus,
-  //   };
-  // },
+
   (dispatch) => {
     return {
       updateCampus: (id, campus) => {
@@ -122,7 +96,3 @@ export default connect(
     };
   }
 )(UpdateCampus);
-
-//export default UpdateCampus;
-//!//!questions to ask, why is it not this.props.singleCampus.id?
-//!this.props.singleCampus gives me back an obj
