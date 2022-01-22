@@ -112,7 +112,9 @@ div#campusHomeButton {
   justify-content: center;
 }
 
-button.homeButton {
+img {
+  width: 550px;
+  height: 300px;
 }
 
 hr {

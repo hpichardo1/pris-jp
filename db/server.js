@@ -70,28 +70,31 @@ const campusData = [
   {
     name: "Teta",
     imageUrl:
-      "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Dartmouth_College_campus_2007-10-20_09.JPG/800px-Dartmouth_College_campus_2007-10-20_09.JPG",
     address: "13456778 Driveway",
     description: faker.lorem.paragraphs(),
   },
   {
     name: "Hello World",
     imageUrl:
-      "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Dartmouth_College_campus_2007-10-20_09.JPG/800px-Dartmouth_College_campus_2007-10-20_09.JPG",
+    address: "13456778 Driveway",
     address: "188262 TurnPike",
     description: faker.lorem.paragraphs(),
   },
   {
     name: "Never Land",
     imageUrl:
-      "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Dartmouth_College_campus_2007-10-20_09.JPG/800px-Dartmouth_College_campus_2007-10-20_09.JPG",
+    address: "13456778 Driveway",
     address: "123447 Highway",
     description: faker.lorem.paragraphs(),
   },
   {
     name: "Data Deck ",
     imageUrl:
-      "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Dartmouth_College_campus_2007-10-20_09.JPG/800px-Dartmouth_College_campus_2007-10-20_09.JPG",
+    address: "13456778 Driveway",
     address: "777 Nabi Ave",
     description: faker.lorem.paragraphs(),
   },
@@ -103,7 +106,7 @@ const studentData = [
     lastName: "Kim",
     email: "hello123@yahoo.com",
     imageUrl:
-      "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
+      "https://www.clipartmax.com/png/middle/232-2325061_spongebob-squarepants-characters-fish.png",
     gpa: 3.8,
   },
   {
@@ -111,7 +114,7 @@ const studentData = [
     lastName: "Brewer",
     email: "nickb134@gmail.com",
     imageUrl:
-      "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
+      "https://i.etsystatic.com/15568096/r/il/e1ced4/2010945485/il_794xN.2010945485_a6x4.jpg",
     gpa: 3.5,
   },
   {
