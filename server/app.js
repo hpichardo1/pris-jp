@@ -6,16 +6,10 @@ const {
 
 const app = express();
 
-// very important middleware for put and post routes
 app.use(express.json());
 
 app.use("/dist", express.static(path.join(__dirname, "../dist")));
 app.use(express.static(path.join(__dirname, "../public")));
-
-//error middleware
-// app.use((err, req, res, next) => {
-//   res.status(500).send({ error: err });
-// });
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
@@ -36,8 +30,6 @@ app.get("/api/students", async (req, res, next) => {
     console.log(error);
   }
 });
-
-//try another route without includes
 
 app.get("/api/campuses/:id", async (req, res, next) => {
   try {

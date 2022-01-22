@@ -55,8 +55,7 @@ class StudentsForm extends Component {
       changeGpa,
       changeCampus,
     } = this;
-    // console.log(this.props.addStudent);
-    // console.log(this.props.campuses);
+    
     return (
       <>
         <form onSubmit={onSubmit}>
@@ -107,3 +106,7 @@ const mapDispatch = (dispatch) => {
 };
 
 export default connect(mapState, mapDispatch)(StudentsForm);
+
+/*
+
+        */

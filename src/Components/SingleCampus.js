@@ -31,7 +31,6 @@ class SingleCampus extends Component {
                   <ul key={el.id}>
                     <li>
                       <Link to={`/students/${el.id}`}>{el.firstName}</Link>{" "}
-                      {/* <button onClick={() => editCampusId(el)}> */}
                       <button
                         onClick={() => {
                           editCampusId(el);
@@ -73,9 +72,3 @@ const mapDispatch = (dispatch) => {
 };
 
 export default connect(mapState, mapDispatch)(SingleCampus);
-
-//for each student produce a unregister button
-//pass on the student to the thunk
-//in the thunk, redefine student.campusId = null
-//same put
-//

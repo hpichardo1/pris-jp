@@ -28,7 +28,6 @@ function SingleStudent(props) {
       <ul>
         <li>email: {singleStudent.email}</li>
         <li>GPA: {singleStudent.gpa}</li>
-        {/* is this student enrolled in a campus, meaning they have a campusId? if so return the campus name */}
         <li>
           Attends:{" "}
           {singleStudent.campusId ? (

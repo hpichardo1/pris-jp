@@ -105,7 +105,6 @@ const studentData = [
     imageUrl:
       "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     gpa: 3.8,
-    //campusId: 1,
   },
   {
     firstName: "Nick",
@@ -114,7 +113,6 @@ const studentData = [
     imageUrl:
       "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     gpa: 3.5,
-    //campusId: 2,
   },
   {
     firstName: "Ada",
@@ -123,7 +121,6 @@ const studentData = [
     imageUrl:
       "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     gpa: 2.5,
-    //campusId: 3,
   },
   {
     firstName: "Sal",
@@ -132,29 +129,14 @@ const studentData = [
     imageUrl:
       "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
     gpa: 3.2,
-    //campusId: 1,
   },
 ];
-
-//associations:
-//Students may be associated with at most one campus. Likewise, campuses may be associated with many students
 
 Students.belongsTo(Campuses);
 Campuses.hasMany(Students);
 
 const syncAndSeed = async () => {
   await db.sync({ force: true });
-
-  // const [Teta, HelloWorld, NeverLand, DataDeck] = await Promise.all(
-  //   campusData.map((el) =>
-  //     Campuses.create({
-  //       name: el.name,
-  //       imageUrl: el.imageUrl,
-  //       address: el.address,
-  //       description: el.description,
-  //     })
-  //   )
-  // );
 
   campusData.forEach(async (el) => {
     await Campuses.create({

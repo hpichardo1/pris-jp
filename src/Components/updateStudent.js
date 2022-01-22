@@ -74,6 +74,7 @@ class UpdateStudent extends Component {
           />
 
           <input value={gpa} name="gpa" onChange={onChange} placeholder="GPA" />
+
           <input value={campusId} name="campusId" onChange={onChange} />
 
           <button>SAVE</button>

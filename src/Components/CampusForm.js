@@ -129,26 +129,3 @@ const mapDispatch = (dispatch, { history }) => {
 };
 
 export default connect(null, mapDispatch)(CampusForm);
-
-// { <>
-//   <form onSubmit={onSubmit}>
-//     <label>NAME:</label>
-
-//     <input type="text" name="name" onChange={changeName} />
-
-//     <label>IMAGE:</label>
-
-//     <input type="text" name="imageUrl" onChange={changeUrl} />
-
-//     <label>ADDRESS:</label>
-//     <input value={address} name="address" onChange={changeAddress} />
-
-//     <label>DESCRIPTION:</label>
-// <input
-//   value={description}
-//   name="description"
-//   onChange={changeDescription}
-// />
-//     <button>CREATE </button>
-//   </form>
-// </>}

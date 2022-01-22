@@ -67,7 +67,7 @@ body {
   width: 50%;
 }
 
-#campusNav {
+#campusNav #studentNav {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -76,4 +76,45 @@ body {
 
 div.campusList {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#students div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* position: relative; */
+  width: 100vw;
+  overflow: hidden;
+  margin: 2px;
+  padding: 5px;
+}
+.studentList p {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* width: 300px;
+  height: 100px;
+  border: 1px dotted blue; */
+}
+
+p {
+  align-items: center;
+}
+
+div#homeButton {
+  display: flex;
+  justify-content: center;
+}
+
+div#campusHomeButton {
+  display: flex;
+  justify-content: center;
+}
+
+button.homeButton {
+}
+
+hr {
+  background-color: black;
 }

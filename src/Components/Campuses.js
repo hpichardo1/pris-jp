@@ -21,6 +21,12 @@ class Campuses extends Component {
         <nav id="campusNav">
           <h3 id="campusHeading">CAMPUSES: ({campuses.length})</h3>
         </nav>
+        <div id="campusHomeButton">
+          <button>
+            <Link to="/">BACK TO HOME</Link>
+          </button>
+        </div>
+        <hr></hr>
         <section id="campuses">
           <div>
             {campuses.map((campus) => {
@@ -49,10 +55,6 @@ class Campuses extends Component {
 
           <CampusForm />
         </section>
-
-        <button>
-          <Link to="/">BACK TO HOME</Link>
-        </button>
       </>
     );
   }

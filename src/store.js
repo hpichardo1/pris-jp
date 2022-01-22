@@ -135,19 +135,17 @@ export const _deleteStudent = (id) => {
 
 //-------- form thunks
 
-export const _addCampus = (campus, history) => {
+export const _addCampus = (campus) => {
   return async (dispatch) => {
     const newCampus = (await axios.post("/api/campuses", campus)).data;
     dispatch(addCampus(newCampus));
-    //history.push("/campuses");
   };
 };
 
-export const _addStudents = (student, history) => {
+export const _addStudents = (student) => {
   return async (dispatch) => {
     const newStudent = (await axios.post("/api/students", student)).data;
     dispatch(addStudent(newStudent));
-    //history.push("/students");
   };
 };
 
