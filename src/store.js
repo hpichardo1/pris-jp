@@ -11,15 +11,14 @@ const initialState = {
 };
 
 //------- action creators
-
-export function loadCampuses(campus) {
+function loadCampuses(campus) {
   return {
     type: "LOAD_CAMPUSES",
     payload: campus,
   };
 }
 
-export function loadStudents(student) {
+function loadStudents(student) {
   return {
     type: "LOAD_STUDENTS",
     payload: student,
@@ -40,28 +39,28 @@ export function loadSingleCampus(campus) {
   };
 }
 
-export function deleteCampus(id) {
+function deleteCampus(id) {
   return {
     type: "DELETE_CAMPUS",
     payload: id,
   };
 }
 
-export function deleteStudent(id) {
+function deleteStudent(id) {
   return {
     type: "DELETE_STUDENT",
     payload: id,
   };
 }
 
-export function addCampus(campus) {
+function addCampus(campus) {
   return {
     type: "ADD_CAMPUS",
     payload: campus,
   };
 }
 
-export function addStudent(student) {
+function addStudent(student) {
   return {
     type: "ADD_STUDENT",
     payload: student,
@@ -155,7 +154,6 @@ export const _addStudents = (student, history) => {
 //------- update thunks
 
 export const _editCampus = (id, campus, history) => {
-  //console.log("line 152222222222", campus);
   return async (dispatch) => {
     const updateCampus = (await axios.put(`/api/campuses/${id}`, campus)).data;
     dispatch(editCampus(updateCampus));
@@ -182,11 +180,6 @@ export const _unregisterId = (student) => {
     dispatch(unregisterId(updateCampusId));
   };
 };
-//another thunk editCampusId
-//same put route
-//student.campusId = null
-
-//----------reducer
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -239,7 +232,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         singleCampus: action.payload,
         campuses: state.campuses.map((campus) => {
-          // if the current campus.id is the same id we just updates, then return that updated campus
           if (campus.id === action.payload.id) {
             return action.payload;
           }
@@ -260,10 +252,6 @@ const reducer = (state = initialState, action) => {
     case "UNREGISTER_ID":
       return {
         ...state,
-        // singleCampus: state.singleCampus.students.filter((student) => {
-        //   return student.id !== action.payload.id;
-        // }),
-
         students: state.students.map((student) => {
           if (student.id !== action.payload.id) {
             return student;
@@ -271,14 +259,6 @@ const reducer = (state = initialState, action) => {
           return action.payload;
         }),
       };
-
-    //case EDIT_CAMPUSID:
-    // return state.map((student) => {
-    //   if (student.id === action.student.id) {
-    //     action.student;
-    //   }
-    //   return student;
-    // });
     default:
       return state;
   }
