@@ -49,7 +49,7 @@ class UpdateStudent extends Component {
   render() {
     const { onSubmit, onChange } = this;
     const { firstName, lastName, email, gpa, campusId, imageUrl } = this.state;
-    console.log("!!!!!!!!!!!!!", this.props.updateStudent);
+
     return (
       <>
         <form onSubmit={onSubmit}>

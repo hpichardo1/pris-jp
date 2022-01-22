@@ -46,7 +46,10 @@ class SingleCampus extends Component {
           </li>
         </ul>
 
-        <UpdateCampus singleCampus={singleCampus} />
+        <UpdateCampus
+          singleCampus={singleCampus}
+          history={this.props.history}
+        />
 
         <button>
           <Link to="/campuses">BACK TO CAMPUSES</Link>
@@ -57,7 +60,6 @@ class SingleCampus extends Component {
 }
 
 const mapState = ({ singleCampus }) => {
-  console.log("????", singleCampus.students);
   return { singleCampus };
 };
 const mapDispatch = (dispatch) => {

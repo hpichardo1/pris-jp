@@ -1,10 +1,3 @@
-// class component
-// have local state thats the same key as your db attributes
-//bring in dispatch to add new campus
-// onSubmit button is when you call and send it to app.post route. sent this.state to app.post route
-// fro each input, write onChange function for it
-//
-
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { _addCampus } from "../store";
@@ -25,8 +18,7 @@ class CampusForm extends Component {
     this.changeAddress = this.changeAddress.bind(this);
     this.changeDescription = this.changeDescription.bind(this);
   }
-  //an event that allows us to change the state and then set that value
-  //an event that allows us to get the target and value
+
   changeName(ev) {
     this.setState({ name: ev.target.value });
   }
@@ -49,7 +41,6 @@ class CampusForm extends Component {
       address: "",
       description: "",
     });
-    this.props.history.push("/campuses");
   }
   render() {
     const { name, imageUrl, address, description } = this.state;

@@ -18,14 +18,12 @@ class UpdateCampus extends Component {
     this.changeName = this.changeName.bind(this);
   }
   componentDidUpdate(prevProps) {
-
     if (!prevProps.singleCampus.id && this.props.singleCampus) {
       const { name, imageUrl, address, description } = this.props.singleCampus;
       this.setState({ name, imageUrl, address, description });
     }
-
   }
-  onSubmit(ev, history) {
+  onSubmit(ev) {
     ev.preventDefault();
     this.props.updateCampus(this.props.singleCampus.id, this.state);
     this.setState({
