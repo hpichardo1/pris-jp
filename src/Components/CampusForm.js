@@ -7,7 +7,7 @@
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { _addCampus } from "./store";
+import { _addCampus } from "../store";
 
 class CampusForm extends Component {
   constructor() {
@@ -45,6 +45,12 @@ class CampusForm extends Component {
     //basically the save button
     ev.preventDefault();
     this.props.addCampus(this.state);
+    this.setState({
+      name: "",
+      imageUrl: "",
+      address: "",
+      description: "",
+    });
     this.props.history.push("/campuses");
   }
   render() {
@@ -59,51 +65,53 @@ class CampusForm extends Component {
     //console.log(this.props.addCampus);
     return (
       <>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className="form">
           <table>
             <tbody>
               <tr>
-                <td>Name:</td>
                 <td>
                   {" "}
-                  <input value={name} name="name" onChange={changeName} />
+                  <input
+                    value={name}
+                    name="name"
+                    onChange={changeName}
+                    placeholder="Name"
+                  />
                 </td>
               </tr>
               <tr>
-                <td>ImageUrl:</td>
                 <td>
                   {" "}
                   <input
                     value={imageUrl}
                     name="imageUrl"
                     onChange={changeUrl}
+                    placeholder="ImageUrl"
                   />
                 </td>
               </tr>
               <tr>
-                <td>Address:</td>
                 <td>
                   {" "}
                   <input
                     value={address}
                     name="address"
                     onChange={changeAddress}
+                    placeholder="Address"
                   />
                 </td>
               </tr>
               <tr>
-                <td>Description:</td>
                 <td>
                   <input
                     value={description}
                     name="description"
                     onChange={changeDescription}
+                    placeholder="Description"
                   />
                 </td>
               </tr>
-              <button class="button-12" role="button">
-                ADD CAMPUS
-              </button>
+              <button>ADD NEW CAMPUS</button>
             </tbody>
           </table>
         </form>

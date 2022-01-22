@@ -1,20 +1,22 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { _loadSingleStudent } from "./store";
+import { _loadSingleStudent } from "../store";
 import { useParams, Link } from "react-router-dom";
+import UpdateStudent from "./updateStudent";
 
 function SingleStudent(props) {
   const { load_One_Student, singleStudent } = props;
   const { id } = useParams();
-  //console.log("STUDENT ID", id);
+  console.log(singleStudent);
 
   useEffect(() => {
     load_One_Student(id);
   }, [id]);
   // console.log(
   //   "????",
-  //   singleStudent.campusId ? singleStudent.campus.name : "idk nothing"
+  //   singleStudent.campusId ? singleStudent.campus?.name : "idk nothing"
   // );
+  console.log("PROPS", props);
   return (
     <>
       <h1>SINGLE STUDENT PAGE!!!</h1>
@@ -31,14 +33,14 @@ function SingleStudent(props) {
           Attends:{" "}
           {singleStudent.campusId ? (
             <Link to={`/campuses/${singleStudent.campusId}`}>
-              {singleStudent.campus.name}
+              {singleStudent.campus?.name}
             </Link>
           ) : (
             " Currently not enrolled "
           )}
         </li>
       </ul>
-
+      <UpdateStudent singleStudent={singleStudent} history={props.history} />
       <button>
         <Link to="/students">BACK TO STUDENTS</Link>
       </button>

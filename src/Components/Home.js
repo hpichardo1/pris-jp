@@ -6,13 +6,13 @@ function Home({ campuses, students }) {
   console.log(campuses);
   return (
     <>
+      <div>
+        <img src="CampusConnection.png" class="center" />
+      </div>
       <nav>
         <Link to="/campuses">CAMPUSES ({campuses.length})</Link>
         <Link to="/students"> STUDENTS ({students.length})</Link>
       </nav>
-      <div>
-        <h1>HOME PAGE!!!</h1>
-      </div>
     </>
   );
 }

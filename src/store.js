@@ -82,6 +82,12 @@ function editStudent(student) {
   };
 }
 
+function unregisterId(student) {
+  return {
+    type: "UNREGISTER_ID",
+    payload: student,
+  };
+}
 //-------thunks
 
 export const _loadCampuses = () => {
@@ -134,7 +140,7 @@ export const _addCampus = (campus, history) => {
   return async (dispatch) => {
     const newCampus = (await axios.post("/api/campuses", campus)).data;
     dispatch(addCampus(newCampus));
-    history.push("/campuses");
+    //history.push("/campuses");
   };
 };
 
@@ -148,20 +154,37 @@ export const _addStudents = (student, history) => {
 
 //------- update thunks
 
-export const _editCampus = (id, campus) => {
+export const _editCampus = (id, campus, history) => {
+  //console.log("line 152222222222", campus);
   return async (dispatch) => {
     const updateCampus = (await axios.put(`/api/campuses/${id}`, campus)).data;
     dispatch(editCampus(updateCampus));
+    //history.push("/campuses");
   };
 };
 
-export const _editStudent = (student) => {
+export const _editStudent = (id, student, history) => {
   return async (dispatch) => {
     const updateStudent = (await axios.put(`/api/students/${id}`, student))
       .data;
     dispatch(editStudent(updateStudent));
+    history.push("/students");
   };
 };
+
+export const _unregisterId = (student) => {
+  console.log("STUDENT", student);
+  return async (dispatch) => {
+    student.campusId = null;
+    const updateCampusId = (
+      await axios.put(`/api/students/${student.id}`, student)
+    ).data;
+    dispatch(unregisterId(updateCampusId));
+  };
+};
+//another thunk editCampusId
+//same put route
+//student.campusId = null
 
 //----------reducer
 
@@ -214,17 +237,48 @@ const reducer = (state = initialState, action) => {
     case "EDIT_CAMPUS":
       return {
         ...state,
-        campuses: state.campuses.map((campus) =>
-          campus.id !== action.payload.id ? campus : action.payload
-        ),
+        singleCampus: action.payload,
+        campuses: state.campuses.map((campus) => {
+          // if the current campus.id is the same id we just updates, then return that updated campus
+          if (campus.id === action.payload.id) {
+            return action.payload;
+          }
+          return campus;
+        }),
       };
     case "EDIT_STUDENT":
       return {
         ...state,
-        students: state.students.map((student) =>
-          student.id !== action.payload.id ? student : action.payload
-        ),
+        singleStudent: action.payload,
+        students: state.students.map((student) => {
+          if (student.id === action.payload.id) {
+            return action.payload;
+          }
+          return student;
+        }),
       };
+    case "UNREGISTER_ID":
+      return {
+        ...state,
+        // singleCampus: state.singleCampus.students.filter((student) => {
+        //   return student.id !== action.payload.id;
+        // }),
+
+        students: state.students.map((student) => {
+          if (student.id !== action.payload.id) {
+            return student;
+          }
+          return action.payload;
+        }),
+      };
+
+    //case EDIT_CAMPUSID:
+    // return state.map((student) => {
+    //   if (student.id === action.student.id) {
+    //     action.student;
+    //   }
+    //   return student;
+    // });
     default:
       return state;
   }

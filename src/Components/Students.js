@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link, Route } from "react-router-dom";
-import { _deleteStudent, _loadStudents } from "./store";
+import { _deleteStudent, _loadStudents } from "../store";
 import StudentsForm from "./StudentsForm";
 
 class Students extends Component {

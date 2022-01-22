@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
-import store, { _loadCampuses, _loadStudents } from "./store";
+import store, { _loadCampuses, _loadStudents, _unregisterId } from "./store";
 import { Provider, connect } from "react-redux";
-import Campuses from "./Campuses";
-import Students from "./Students";
-import Home from "./Home";
-import SingleCampus from "./SingleCampus";
-import SingleStudent from "./SingleStudent";
-import UpdateCampus from "./updateCampus";
+import Campuses from "./Components/Campuses";
+import Students from "./Components/Students";
+import Home from "./Components/Home";
+import SingleCampus from "./Components/SingleCampus";
+import SingleStudent from "./Components/SingleStudent";
+import UpdateCampus from "./Components/updateCampus";
 
 class _App extends Component {
   constructor() {
@@ -22,7 +22,7 @@ class _App extends Component {
   render() {
     //console.log("****", this.props.students);
     return (
-      <>
+      <div id="mainPage">
         <Switch>
           <Route exact path="/">
             <Home />
@@ -33,7 +33,7 @@ class _App extends Component {
           <Route exact path="/students/:id" component={SingleStudent} />
           <Route exact path="/campuses/:id/edit" component={UpdateCampus} />
         </Switch>
-      </>
+      </div>
     );
   }
 }

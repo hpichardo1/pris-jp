@@ -1,31 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link, Route } from "react-router-dom";
-import { _deleteCampus, _loadCampuses } from "./store";
+import { _deleteCampus, _loadCampuses } from "../store";
 import CampusForm from "./CampusForm";
-/*
-function Campuses({ campuses, delete_Campus }) {
-  return (
-    <>
-      <h2>HELLO THIS IS CAMPUSES PAGE!!</h2>
-      <h3>CAMPUSES: ({campuses.length})</h3>
-      <ul>
-        {campuses.map((campus) => {
-          return (
-            <li key={campus.id}>
-              <Link to={`/campuses/${campus.id}`}>{campus.name}</Link>
-              <button onClick={() => delete_Campus(campus.id)}>X</button>
-            </li>
-          );
-        })}
-      </ul>
-      <button>
-        <Link to="/">BACK TO HOME</Link>
-      </button>
-    </>
-  );
-}
-*/
 
 class Campuses extends Component {
   constructor() {
@@ -41,7 +18,9 @@ class Campuses extends Component {
 
     return (
       <>
-        <h3 id="campusHeading">CAMPUSES: ({campuses.length})</h3>
+        <nav id="campusNav">
+          <h3 id="campusHeading">CAMPUSES: ({campuses.length})</h3>
+        </nav>
         <section id="campuses">
           <div>
             {campuses.map((campus) => {
@@ -51,7 +30,7 @@ class Campuses extends Component {
                   : prevVal;
               }, 0);
               return (
-                <div key={campus.id}>
+                <div className="campusList" key={campus.id}>
                   {campus.name} {` (Enrolled: ${length})`}
                   <div>
                     <Link to={`/campuses/${campus.id}`}>
@@ -68,9 +47,9 @@ class Campuses extends Component {
             })}
           </div>
 
-          {/* <Route exact path="/campuses" component={CampusForm} /> */}
           <CampusForm />
         </section>
+
         <button>
           <Link to="/">BACK TO HOME</Link>
         </button>
