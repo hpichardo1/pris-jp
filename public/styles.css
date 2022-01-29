@@ -113,8 +113,8 @@ div#campusHomeButton {
 }
 
 img {
-  width: 550px;
-  height: 300px;
+  width: 300px;
+  height: auto;
 }
 
 hr {
