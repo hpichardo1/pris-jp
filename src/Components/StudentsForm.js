@@ -10,7 +10,7 @@ class StudentsForm extends Component {
       lastName: "",
       email: "",
       imageUrl: "",
-      gpa: 0,
+      gpa: "",
       campusId: 0,
     };
     this.onSubmit = this.onSubmit.bind(this);
@@ -21,6 +21,7 @@ class StudentsForm extends Component {
     this.changeGpa = this.changeGpa.bind(this);
     this.changeCampus = this.changeCampus.bind(this);
   }
+
   onSubmit(ev) {
     ev.preventDefault();
     this.props.addStudent(this.state);
@@ -55,7 +56,7 @@ class StudentsForm extends Component {
       changeGpa,
       changeCampus,
     } = this;
-    
+
     return (
       <>
         <form onSubmit={onSubmit}>

@@ -41,6 +41,7 @@ class UpdateCampus extends Component {
   render() {
     const { onSubmit, changeName } = this;
     const { name, imageUrl, address, description } = this.state;
+    console.log("INSIDE UPDATE CAMPUS", this.props.campuses);
     return (
       <>
         <h1>
@@ -83,6 +84,7 @@ export default connect(
   (state) => {
     return {
       singleCampus: state.singleCampus,
+      campuses: state.campuses,
     };
   },
 

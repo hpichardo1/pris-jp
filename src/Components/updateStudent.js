@@ -12,8 +12,10 @@ class UpdateStudent extends Component {
         : "",
       lastName: "",
       email: "",
-      imageUrl: "",
-      gpa: 0,
+      imageUrl: this.props.singleStudent
+        ? "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png"
+        : "",
+      gpa: "",
       campusId: this.props.singleStudent
         ? this.props.singleStudent.campusId
         : "",
@@ -49,7 +51,7 @@ class UpdateStudent extends Component {
   render() {
     const { onSubmit, onChange } = this;
     const { firstName, lastName, email, gpa, campusId, imageUrl } = this.state;
-
+    console.log(this.props.campuses);
     return (
       <>
         <form onSubmit={onSubmit}>
@@ -75,8 +77,16 @@ class UpdateStudent extends Component {
 
           <input value={gpa} name="gpa" onChange={onChange} placeholder="GPA" />
 
-          <input value={campusId} name="campusId" onChange={onChange} />
-
+          <select value={campusId} name="campusId" onChange={onChange}>
+            <option value="">--------------</option>
+            {this.props.campuses.map((campus) => {
+              return (
+                <option value={campus.id} key={campus.id}>
+                  {campus.name}
+                </option>
+              );
+            })}
+          </select>
           <button>SAVE</button>
         </form>
       </>
@@ -87,6 +97,7 @@ class UpdateStudent extends Component {
 const mapState = (state) => {
   return {
     singleStudent: state.singleStudent,
+    campuses: state.campuses,
   };
 };
 

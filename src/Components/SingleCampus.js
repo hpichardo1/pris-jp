@@ -1,4 +1,4 @@
-import React, { useEffect, Component } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { _loadSingleCampus, _unregisterId } from "../store";
 import { Link } from "react-router-dom";
@@ -16,6 +16,7 @@ class SingleCampus extends Component {
 
   render() {
     const { singleCampus, editCampusId } = this.props;
+    console.log("INSIDE SINGLE CAMPUS", this.props.campuses);
     return (
       <>
         <h1>SINGLE CAMPUS PAGE!!!!</h1>
@@ -48,6 +49,7 @@ class SingleCampus extends Component {
 
         <UpdateCampus
           singleCampus={singleCampus}
+          campuses={this.props.campuses}
           history={this.props.history}
         />
 
@@ -59,8 +61,8 @@ class SingleCampus extends Component {
   }
 }
 
-const mapState = ({ singleCampus }) => {
-  return { singleCampus };
+const mapState = ({ singleCampus, campuses }) => {
+  return { singleCampus, campuses };
 };
 const mapDispatch = (dispatch) => {
   return {
