@@ -100,9 +100,9 @@ class CampusForm extends Component {
                   />
                 </td>
               </tr>
-              <button>ADD NEW CAMPUS</button>
             </tbody>
           </table>
+          <button>ADD NEW CAMPUS</button>
         </form>
       </>
     );

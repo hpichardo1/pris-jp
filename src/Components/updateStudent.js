@@ -1,4 +1,3 @@
-import { image } from "faker";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { _editStudent } from "../store";
@@ -27,8 +26,7 @@ class UpdateStudent extends Component {
 
   componentDidUpdate(prevProps) {
     if (!prevProps.singleStudent.id && this.props.singleStudent) {
-      const { firstName, lastName, email, imageUrl, gpa, campusId } =
-        this.props.singleStudent;
+      const { firstName, campusId } = this.props.singleStudent;
       this.setState({ firstName, campusId });
     }
   }
@@ -51,7 +49,6 @@ class UpdateStudent extends Component {
   render() {
     const { onSubmit, onChange } = this;
     const { firstName, lastName, email, gpa, campusId, imageUrl } = this.state;
-    console.log(this.props.campuses);
     return (
       <>
         <form onSubmit={onSubmit}>
@@ -97,7 +94,7 @@ class UpdateStudent extends Component {
 const mapState = (state) => {
   return {
     singleStudent: state.singleStudent,
-    campuses: state.campuses,
+    //campuses: state.campuses,
   };
 };
 

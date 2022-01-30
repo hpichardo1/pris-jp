@@ -7,7 +7,7 @@ function Home({ campuses, students }) {
   return (
     <>
       <div>
-        <img src="CampusConnection.png" class="center" />
+        <img src="CampusConnection.png" className="center" />
       </div>
       <nav>
         <Link to="/campuses">CAMPUSES ({campuses.length})</Link>

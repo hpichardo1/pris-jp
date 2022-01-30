@@ -155,7 +155,7 @@ export const _editCampus = (id, campus, history) => {
   return async (dispatch) => {
     const updateCampus = (await axios.put(`/api/campuses/${id}`, campus)).data;
     dispatch(editCampus(updateCampus));
-    // history.push("/campuses");
+    history.push("/campuses");
   };
 };
 

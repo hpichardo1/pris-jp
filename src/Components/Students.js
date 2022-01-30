@@ -11,11 +11,6 @@ class Students extends Component {
 
   render() {
     const { students, campuses } = this.props;
-    console.log("CAMPUSES", campuses);
-    console.log(
-      "students",
-      students.map((student) => student.campusId)
-    );
 
     return (
       <>
@@ -33,7 +28,7 @@ class Students extends Component {
             {students.map((student) => {
               return (
                 <div key={student.id} className="studentList">
-                  <p>
+                  <div>
                     {student.firstName} {` `}
                     {}
                     {student.campusId === null
@@ -57,7 +52,7 @@ class Students extends Component {
                         details for {student.firstName}
                       </Link>
                     </div>
-                  </p>
+                  </div>
                 </div>
               );
             })}

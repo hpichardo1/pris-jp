@@ -88,10 +88,10 @@ export default connect(
     };
   },
 
-  (dispatch) => {
+  (dispatch, { history }) => {
     return {
       updateCampus: (id, campus) => {
-        dispatch(_editCampus(id, campus));
+        dispatch(_editCampus(id, campus, history));
       },
     };
   }

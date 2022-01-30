@@ -75,6 +75,7 @@ class StudentsForm extends Component {
           <label>GPA:</label>
           <input value={gpa} name="gpa" onChange={changeGpa} />
           <label>CAMPUS:</label>
+
           <select value={campusId} name="campusId" onChange={changeCampus}>
             <option value="">--------------</option>
             {this.props.campuses.map((campus) => {

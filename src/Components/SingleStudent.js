@@ -14,6 +14,7 @@ class SingleStudent extends Component {
   }
   render() {
     const { singleStudent, campuses } = this.props;
+
     return (
       <>
         <h1>SINGLE STUDENT PAGE!!!</h1>
