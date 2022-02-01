@@ -257,6 +257,7 @@ const reducer = (state = initialState, action) => {
           return action.payload;
         }),
       };
+
     default:
       return state;
   }
@@ -265,3 +266,58 @@ const reducer = (state = initialState, action) => {
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 export default store;
+
+/*
+
+ //---------------------------------------------
+//use combine reducers
+//student reducer
+
+export const studentsReducer = (state =[], action) =>{
+switch(action.type){
+  case "LOAD_STUDENTS":
+    return [...state, action.payload]
+    case "ADD_STUDENT":
+      return [...state, action.payload]
+      case "UNREGISTER_ID":
+      return {
+       ...state.map((student) => {
+          if (student.id !== action.payload.id) {
+            return student;
+          }
+          return action.payload;
+        }),
+      };
+    case "DELETE_STUDENT":
+      //!suppose to be wrapped in bracket?
+      return {
+       ...state.filter((student) => {
+          return student.id !== action.payload;
+        }),
+      };
+
+      default:
+        return state
+}
+}
+
+//campuse reducer
+
+export const campusesReducer = (state =[], action) =>{
+  switch(action.type){
+    case "LOAD_CAMPUSES":
+      return [...state, action.payload]
+      case "ADD_CAMPUS":
+          return [...state, action.payload]
+      case "DELETE_CAMPUS":
+        return {
+         ...state.filter((campus) => {
+            return campus.id !== action.payload;
+          }),
+        }
+    default:
+  return state
+  }
+}
+
+*/

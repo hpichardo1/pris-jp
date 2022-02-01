@@ -15,8 +15,9 @@ class UpdateStudent extends Component {
         ? "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png"
         : "",
       gpa: "",
-      campusId: this.props.singleStudent
-        ? this.props.singleStudent.campusId
+      //!trying to display name, shows on some, doesnt show on some
+      campusId: this.props.singleStudent.campus
+        ? this.props.singleStudent.campus?.name
         : "",
     };
 
@@ -25,6 +26,7 @@ class UpdateStudent extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    //! if it wasnt the single user before & now it is that single student
     if (!prevProps.singleStudent.id && this.props.singleStudent) {
       const { firstName, campusId } = this.props.singleStudent;
       this.setState({ firstName, campusId });
@@ -49,45 +51,52 @@ class UpdateStudent extends Component {
   render() {
     const { onSubmit, onChange } = this;
     const { firstName, lastName, email, gpa, campusId, imageUrl } = this.state;
+    console.log(
+      "INSIDE UPDATE STUDENT FORM",
+      this.props.singleStudent.campus?.name
+    );
     return (
       <>
         <form onSubmit={onSubmit}>
           <input
-            value={this.state.firstName || ""}
+            value={firstName || ""}
             name="firstName"
             onChange={onChange}
+            placeholder="FIRST NAME"
           />
           <input
-            value={this.state.lastName || ""}
+            value={lastName || ""}
             name="lastName"
             onChange={onChange}
             placeholder="LAST NAME"
           />
           <input
-            value={this.state.email || ""}
+            value={email || ""}
             name="email"
             onChange={onChange}
             placeholder="EMAIL"
           />
           <input
-            value={this.state.imageUrl || ""}
+            value={imageUrl || ""}
             name="imageUrl"
             onChange={onChange}
             placeholder="IMAGEURL"
           />
 
           <input
-            value={this.state.gpa || ""}
+            value={gpa || ""}
             name="gpa"
             onChange={onChange}
             placeholder="GPA"
           />
           <input
-            value={this.state.campusId || ""}
+            value={campusId || ""}
             name="campusId"
             onChange={onChange}
             placeholder="campusId"
           />
+
+          {/* trying to make a drop down for list of campuses student can choose from, gets maximum call stack */}
           {/* <select value={campusId} name="campusId" onChange={onChange}>
             <option value="">--------------</option>
             {this.props.campuses.map((campus) => {
