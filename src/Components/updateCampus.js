@@ -41,7 +41,7 @@ class UpdateCampus extends Component {
   render() {
     const { onSubmit, changeName } = this;
     const { name, imageUrl, address, description } = this.state;
-    console.log("INSIDE UPDATE CAMPUS", this.props.campuses);
+    //console.log("INSIDE UPDATE CAMPUS", this.props.campuses);
     return (
       <>
         <h1>
@@ -50,25 +50,25 @@ class UpdateCampus extends Component {
         </h1>
         <form onSubmit={onSubmit}>
           <input
-            value={name}
+            value={this.state.name || ""}
             name="name"
             onChange={changeName}
             placeholder="EDIT NAME"
           />
           <input
-            value={imageUrl}
+            value={this.state.imageUrl || ""}
             name="imageUrl"
             onChange={changeName}
             placeholder="EDIT IMAGEURL"
           />
           <input
-            value={address}
+            value={this.state.address || ""}
             name="address"
             onChange={changeName}
             placeholder="EDIT ADDRESS"
           />
           <input
-            value={description}
+            value={this.state.description || ""}
             name="description"
             onChange={changeName}
             placeholder=" EDIT DESCRIPTION"
@@ -84,7 +84,7 @@ export default connect(
   (state) => {
     return {
       singleCampus: state.singleCampus,
-      campuses: state.campuses,
+      //campuses: state.campuses,
     };
   },
 

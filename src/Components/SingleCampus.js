@@ -19,6 +19,15 @@ class SingleCampus extends Component {
     console.log("INSIDE SINGLE CAMPUS", this.props.campuses);
     return (
       <>
+        <nav id="campusNav">
+          <h3 id="campusHeading"> SINGLE CAMPUS: </h3>
+        </nav>
+        <div id="campusHomeButton">
+          <button>
+            <Link to="/campuses">BACK TO CAMPUSES</Link>
+          </button>
+        </div>
+        <hr></hr>
         <h1>SINGLE CAMPUS PAGE!!!!</h1>
         <img src={singleCampus.imageUrl} />
         <h3>NAME: {singleCampus.name}</h3>
@@ -52,10 +61,6 @@ class SingleCampus extends Component {
           campuses={this.props.campuses}
           history={this.props.history}
         />
-
-        <button>
-          <Link to="/campuses">BACK TO CAMPUSES</Link>
-        </button>
       </>
     );
   }

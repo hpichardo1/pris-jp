@@ -52,29 +52,43 @@ class UpdateStudent extends Component {
     return (
       <>
         <form onSubmit={onSubmit}>
-          <input value={firstName} name="firstName" onChange={onChange} />
           <input
-            value={lastName}
+            value={this.state.firstName || ""}
+            name="firstName"
+            onChange={onChange}
+          />
+          <input
+            value={this.state.lastName || ""}
             name="lastName"
             onChange={onChange}
             placeholder="LAST NAME"
           />
           <input
-            value={email}
+            value={this.state.email || ""}
             name="email"
             onChange={onChange}
             placeholder="EMAIL"
           />
           <input
-            value={imageUrl}
+            value={this.state.imageUrl || ""}
             name="imageUrl"
             onChange={onChange}
             placeholder="IMAGEURL"
           />
 
-          <input value={gpa} name="gpa" onChange={onChange} placeholder="GPA" />
-
-          <select value={campusId} name="campusId" onChange={onChange}>
+          <input
+            value={this.state.gpa || ""}
+            name="gpa"
+            onChange={onChange}
+            placeholder="GPA"
+          />
+          <input
+            value={this.state.campusId || ""}
+            name="campusId"
+            onChange={onChange}
+            placeholder="campusId"
+          />
+          {/* <select value={campusId} name="campusId" onChange={onChange}>
             <option value="">--------------</option>
             {this.props.campuses.map((campus) => {
               return (
@@ -84,6 +98,7 @@ class UpdateStudent extends Component {
               );
             })}
           </select>
+          */}
           <button>SAVE</button>
         </form>
       </>

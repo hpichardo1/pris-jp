@@ -17,6 +17,15 @@ class SingleStudent extends Component {
 
     return (
       <>
+        <nav id="campusNav">
+          <h3 id="campusHeading"> SINGLE STUDENT </h3>
+        </nav>
+        <div id="campusHomeButton">
+          <button>
+            <Link to="/students">BACK TO STUDENTS</Link>
+          </button>
+        </div>
+        <hr></hr>
         <h1>SINGLE STUDENT PAGE!!!</h1>
         <img src={singleStudent.imageUrl} />
         <h3>
@@ -39,12 +48,9 @@ class SingleStudent extends Component {
         </ul>
         <UpdateStudent
           singleStudent={singleStudent}
-          campuses={campuses}
+          //campuses={campuses}
           history={this.props.history}
         />
-        <button>
-          <Link to="/students">BACK TO STUDENTS</Link>
-        </button>
       </>
     );
   }

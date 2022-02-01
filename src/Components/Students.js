@@ -73,6 +73,9 @@ const mapDispatch = (dispatch) => {
     delete_Student: (id) => {
       dispatch(_deleteStudent(id));
     },
+    loadStudents: () => {
+      dispatch(_loadStudents);
+    },
   };
 };
 

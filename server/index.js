@@ -1,9 +1,6 @@
 const port = process.env.PORT || 3000;
 const app = require("./app");
-const {
-  syncAndSeed,
-  models: { Campuses, Students },
-} = require("../db/server");
+const { syncAndSeed } = require("./db/server");
 
 const start = async () => {
   try {

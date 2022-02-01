@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { _deleteCampus, _loadCampuses } from "../store";
 import CampusForm from "./CampusForm";
 
