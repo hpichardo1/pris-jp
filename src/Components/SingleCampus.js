@@ -9,14 +9,9 @@ class SingleCampus extends Component {
     super();
   }
 
-  async componentDidMount() {
-    const id = this.props.match.params.id * 1;
-    this.props.load_One_Campus(id);
-  }
-
   render() {
-    const { singleCampus, editCampusId } = this.props;
-    console.log("INSIDE SINGLE CAMPUS", this.props.campuses);
+    const { campus, students, editCampusId } = this.props;
+    console.log('campus-->', campus)
     return (
       <>
         <nav id="campusNav">
@@ -29,35 +24,33 @@ class SingleCampus extends Component {
         </div>
         <hr></hr>
         <h1>SINGLE CAMPUS PAGE!!!!</h1>
-        <img src={singleCampus.imageUrl} />
-        <h3>NAME: {singleCampus.name}</h3>
+        <img src={campus.imageUrl} />
+        <h3>NAME: {campus.name}</h3>
         <ul>
-          <li>ADDRESS: {singleCampus.address}</li>
-          <li>DESCRIPTION: {singleCampus.description}</li>
+          <li>ADDRESS: {campus.address}</li>
+          <li>DESCRIPTION: {campus.description}</li>
           <li>
             ENROLLED STUDENTS:{" "}
-            {singleCampus.students && singleCampus.students.length !== 0
-              ? singleCampus.students.map((el) => (
-                  <ul key={el.id}>
-                    <li>
-                      <Link to={`/students/${el.id}`}>{el.firstName}</Link>{" "}
-                      <button
-                        onClick={() => {
-                          editCampusId(el);
-                          this.props.load_One_Campus(singleCampus.id);
-                        }}
-                      >
-                        unregister{" "}
-                      </button>
-                    </li>
-                  </ul>
-                ))
-              : "Currently no students enrolled"}
+            { students.length 
+              ?
+              students.map((student) => (
+                    <ul key={student.id}>
+                      <li>
+                        <Link to={`/students/${student.id}`}>{student.firstName}</Link>{" "}
+                        <button
+                          onClick={() => {this.props.unregisterStudent(student.id)}}
+                        >
+                          unregister{" "}
+                        </button>
+                      </li>
+                    </ul>
+                  ))
+                : "Currently no students enrolled"}
           </li>
         </ul>
 
         <UpdateCampus
-          singleCampus={singleCampus}
+          campus={campus}
           campuses={this.props.campuses}
           history={this.props.history}
         />
@@ -66,17 +59,22 @@ class SingleCampus extends Component {
   }
 }
 
-const mapState = ({ singleCampus, campuses }) => {
-  return { singleCampus, campuses };
+const mapState = (state, ownProps) => {
+  const campusId = ownProps.match.params.id*1
+  const campus = state.campuses.find( campus => campus.id === campusId) || {}
+  const students = state.students.filter( student => student.campusId === campusId)
+  console.log('WE HAVE STUDENTS--->', students)
+  return { 
+    campuses: state.campuses,
+    students,
+    campus,
+    ownProps
+  };
 };
 const mapDispatch = (dispatch) => {
   return {
-    load_One_Campus: (id) => {
-      dispatch(_loadSingleCampus(id));
-    },
-    editCampusId: (student) => {
-      dispatch(_unregisterId(student));
-    },
+    editCampusId: (student) => { dispatch(_unregisterId(student)) },
+    unregisterStudent: (id)=>{ dispatch( _unregisterId(id) )}
   };
 };
 

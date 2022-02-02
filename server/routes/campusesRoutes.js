@@ -9,6 +9,7 @@ router.get("/campuses", async (req, res, next) => {
     res.send(await Campuses.findAll());
   } catch (error) {
     console.log(error);
+    next(error)
   }
 });
 
@@ -21,6 +22,7 @@ router.get("/campuses/:id", async (req, res, next) => {
     res.send(campus);
   } catch (error) {
     console.log(error);
+    next(error)
   }
 });
 

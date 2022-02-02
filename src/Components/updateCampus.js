@@ -6,26 +6,25 @@ class UpdateCampus extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: this.props.singleCampus ? this.props.singleCampus.name : "",
-      imageUrl: this.props.singleCampus ? this.props.singleCampus.imageUrl : "",
-      address: this.props.singleCampus ? this.props.singleCampus.address : "",
-      description: this.props.singleCampus
-        ? this.props.singleCampus.description
-        : "",
+      name: props.campus ? this.props.campus.name : "",
+      imageUrl: this.props.campus ? this.props.campus.imageUrl : "",
+      address: this.props.campus ? this.props.campus.address : "",
+      description: this.props.campus? this.props.campus.description : "",
     };
 
     this.onSubmit = this.onSubmit.bind(this);
     this.changeName = this.changeName.bind(this);
   }
   componentDidUpdate(prevProps) {
-    if (!prevProps.singleCampus.id && this.props.singleCampus) {
-      const { name, imageUrl, address, description } = this.props.singleCampus;
+    //make sure to compare values NOT objects/arrays
+    if (prevProps.campus.id !== this.props.campus.id) {
+      const { name, imageUrl, address, description } = this.props.campus;
       this.setState({ name, imageUrl, address, description });
     }
   }
   onSubmit(ev) {
     ev.preventDefault();
-    this.props.updateCampus(this.props.singleCampus.id, this.state);
+    this.props.updateCampus(this.props.campus.id, this.state);
     this.setState({
       name: "",
       imageUrl: "",
@@ -41,6 +40,9 @@ class UpdateCampus extends Component {
   render() {
     const { onSubmit, changeName } = this;
     const { name, imageUrl, address, description } = this.state;
+    // console.log('this.props.campus-->', this.props.campus)
+    // console.log('this.state-->', this.state)
+  
     //console.log("INSIDE UPDATE CAMPUS", this.props.campuses);
     return (
       <>
@@ -50,7 +52,7 @@ class UpdateCampus extends Component {
         </h1>
         <form onSubmit={onSubmit}>
           <input
-            value={this.state.name || ""}
+            value={name || ""}
             name="name"
             onChange={changeName}
             placeholder="EDIT NAME"
@@ -80,19 +82,30 @@ class UpdateCampus extends Component {
   }
 }
 
-export default connect(
-  (state) => {
-    return {
-      singleCampus: state.singleCampus,
-      //campuses: state.campuses,
-    };
-  },
 
-  (dispatch, { history }) => {
-    return {
-      updateCampus: (id, campus) => {
-        dispatch(_editCampus(id, campus, history));
-      },
-    };
-  }
-)(UpdateCampus);
+const mapDispatch = (dispatch)=>{
+  return {
+    updateCampus: (id, campus) => { dispatch(_editCampus(id, campus, history)) }
+ }
+}
+export default connect(null, mapDispatch)(UpdateCampus)
+
+// export default connect(
+//   (state, ownProps) => {
+//     const campus = state.campuses.find( campus => campus.id === ownProps.match.params.id*1) || {}
+//     return {
+//       singleCampus: state.singleCampus,
+//       campuses: state.campuses,
+//       campus
+//       //campuses: state.campuses,
+//     };
+//   },
+
+//   (dispatch, { history }) => {
+//     return {
+//       updateCampus: (id, campus) => {
+//         dispatch(_editCampus(id, campus, history));
+//       },
+//     };
+//   }
+// )(UpdateCampus)

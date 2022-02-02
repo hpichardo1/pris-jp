@@ -3,12 +3,8 @@ import logger from "redux-logger";
 import thunk from "redux-thunk";
 import axios from "axios";
 
-const initialState = {
-  campuses: [],
-  students: [],
-  singleStudent: {},
-  singleCampus: {},
-};
+const LOAD_CAMPUSES = 'LOAD_CAMPUSES'
+const UNREGISTER_STUDENT = 'UNREGISTER_STUDENT'
 
 //------- action creators
 function loadCampuses(campus) {
@@ -83,8 +79,8 @@ function editStudent(student) {
 
 function unregisterId(student) {
   return {
-    type: "UNREGISTER_ID",
-    payload: student,
+    type: UNREGISTER_STUDENT,
+    student
   };
 }
 //-------thunks
@@ -155,33 +151,34 @@ export const _editCampus = (id, campus, history) => {
   return async (dispatch) => {
     const updateCampus = (await axios.put(`/api/campuses/${id}`, campus)).data;
     dispatch(editCampus(updateCampus));
-    history.push("/campuses");
   };
 };
 
 export const _editStudent = (id, student, history) => {
   return async (dispatch) => {
-    const updateStudent = (await axios.put(`/api/students/${id}`, student))
-      .data;
+    const updateStudent = (await axios.put(`/api/students/${id}`, student)).data;
     dispatch(editStudent(updateStudent));
     history.push("/students");
   };
 };
 
-export const _unregisterId = (student) => {
-  console.log("STUDENT", student);
+export const _unregisterId = (id) => {
   return async (dispatch) => {
-    student.campusId = null;
-    const updateCampusId = (
-      await axios.put(`/api/students/${student.id}`, student)
-    ).data;
-    dispatch(unregisterId(updateCampusId));
+    const updatedStudent = (await axios.put(`/api/students/${id}`)).data;
+    dispatch(unregisterId(updatedStudent));
   };
+};
+
+const initialState = {
+  campuses: [],
+  students: [],
+  singleStudent: {},
+  singleCampus: {},
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "LOAD_CAMPUSES":
+    case LOAD_CAMPUSES:
       return {
         ...state,
         campuses: action.payload,
@@ -247,17 +244,16 @@ const reducer = (state = initialState, action) => {
           return student;
         }),
       };
-    case "UNREGISTER_ID":
+    case UNREGISTER_STUDENT:
       return {
         ...state,
         students: state.students.map((student) => {
-          if (student.id !== action.payload.id) {
-            return student;
+          if (student.id === action.student.id) {
+            return action.student
           }
-          return action.payload;
+          return student
         }),
       };
-
     default:
       return state;
   }

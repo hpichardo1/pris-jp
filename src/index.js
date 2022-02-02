@@ -23,9 +23,7 @@ class _App extends Component {
     return (
       <div id="mainPage">
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
+          <Route exact path="/"><Home /></Route>
           <Route exact path="/campuses" component={Campuses} />
           <Route exact path="/students" component={Students} />
           <Route exact path="/campuses/:id" component={SingleCampus} />

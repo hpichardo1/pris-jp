@@ -4,7 +4,7 @@ const db = new Sequelize(
   process.env.DATABASE_URL || "postgres://localhost/jpfp"
 );
 const faker = require("faker");
-console.log(faker.lorem.paragraph);
+//console.log(faker.lorem.paragraph);
 
 const Campuses = db.define("campus", {
   name: {

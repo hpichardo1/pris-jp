@@ -43,11 +43,17 @@ router.post("/students", async (req, res, next) => {
 
 router.put("/students/:id", async (req, res, next) => {
   try {
-    const student = await Students.findByPk(req.params.id);
-    res.send(await student.update(req.body));
+    let student = await Students.findByPk(req.params.id);
+    //console.log('first-->', student)
+    await student.update({ campusId: null })
+    student = await Students.findByPk(req.params.id);
+    //console.log('second-->', student)
+
+    res.send(student)
   } catch (error) {
     next(error);
   }
 });
 
 module.exports = router;
+ß
